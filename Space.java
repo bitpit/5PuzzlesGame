@@ -18,6 +18,10 @@ public class Space {
         return value;
     }
     
+    public void setValue(int v){
+        value = v;
+    }
+    
     public static void main(String[] args){
 
         //For testing
