@@ -1,4 +1,4 @@
-public class SodukuRules implements Rules {
+public class SodukuRules implements Rule {
     
     private Game soduku;
     
@@ -19,6 +19,18 @@ public class SodukuRules implements Rules {
     
     public boolean shape(){
         
+        return true;
+    }
+    
+    
+    public boolean constraints(Space s){
+        
+        if (row() && column() && shape())
+            return true;
+        return false;
+    }
+    
+    public boolean allConstraints(){
         return true;
     }
 

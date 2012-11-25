@@ -1,10 +1,9 @@
-public class Game {
+public interface Game {
     
-    private String name;
     
-    public String getName(){
-        
-        return name;
-    }
+    String getName();
+    boolean finished();
+    void printBoardTerm();
+    Space nextUnsolved();
     
 }

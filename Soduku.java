@@ -4,9 +4,9 @@ import java.io.PrintStream;
 import java.io.FileReader;
 import java.util.Scanner;
 
-public class Soduku extends Game {
+public class Soduku implements Game {
 
-    private Space[][] grids;
+    private SodukuSpace[][] grids;
     private String name;
     int dimensions;
     
@@ -14,10 +14,10 @@ public class Soduku extends Game {
         
         dimensions = d;
         name = "Soduku";
-        grids = new Space[dimensions][dimensions];
+        grids = new SodukuSpace[dimensions][dimensions];
         for (int i = 0; i < dimensions; i++){
             for (int j = 0; j<dimensions;j++){
-                grids[i][j] = new Space(dimensions);
+                grids[i][j] = new SodukuSpace(dimensions);
             }
         }
         
@@ -29,39 +29,30 @@ public class Soduku extends Game {
     }
     
     
-    public void printBoardTerm(){
-        
-        System.out.println();
-        
-        for (int i = 0; i < dimensions; i++){
-            
-            for (int j = 0; j < dimensions; j++){
-                
-                int valer = grids[i][j].getValue();
-                
-                if (valer != 0)
-                    System.out.printf("%3d", grids[i][j].getValue());
-                else
-                    System.out.printf("%3s","-");
-                    
-                if (j/2.0==1.0 || j/5.0==1.0 || j/8.0 == 1.0)
-                    System.out.print(" ");
-                
-            }
-            
-            if (i/2.0==1.0 || i/5.0==1.0 || i/8.0 == 1.0)
-                System.out.println();
-            System.out.println();
-            
-        }
-        
+
+    
+    public String getName(){
+        return name;
     }
     
-    public static void main(String[] args){
-        
-        Soduku s = new Soduku(9,"testSoduku");
-        
-        s.printBoardTerm();
+    public Space nextUnsolved(){
+        for (int i = 0; i < dimensions;i++){
+            for (int j = 0; j<dimensions;j++){
+                if (grids[i][j].getValue()==0) return grids[i][j];
+            }
+        }
+        return null;
+    }
+    
+    
+    public boolean finished(){
+        for (int i = 0; i < dimensions;i++){
+            for (int j = 0; j<dimensions;j++){
+                if (grids[i][j].getValue()==0)
+                    return false;
+            }
+        }
+        return true;
     }
     
     
@@ -91,5 +82,34 @@ public class Soduku extends Game {
             
         }
     }
+    
+    public void printBoardTerm(){
+        
+        System.out.println();
+        
+        for (int i = 0; i < dimensions; i++){
+            
+            for (int j = 0; j < dimensions; j++){
+                
+                int valer = grids[i][j].getValue();
+                
+                if (valer != 0)
+                    System.out.printf("%3d", grids[i][j].getValue());
+                else
+                    System.out.printf("%3s","-");
+                
+                if (j/2.0==1.0 || j/5.0==1.0 || j/8.0 == 1.0)
+                    System.out.print(" ");
+                
+            }
+            
+            if (i/2.0==1.0 || i/5.0==1.0 || i/8.0 == 1.0)
+                System.out.println();
+            System.out.println();
+            
+        }
+        
+    }
+    
 
 }
