@@ -17,11 +17,12 @@ public class Soduku implements Game {
         grids = new SodukuSpace[dimensions][dimensions];
         for (int i = 0; i < dimensions; i++){
             for (int j = 0; j<dimensions;j++){
-                grids[i][j] = new SodukuSpace(dimensions);
+                grids[i][j] = new SodukuSpace(dimensions,i,j);
             }
         }
         
     }
+    
     
     public Soduku (int d, String fn){
         this(d);
@@ -29,11 +30,10 @@ public class Soduku implements Game {
     }
     
     
-
-    
     public String getName(){
         return name;
     }
+    
     
     public Space nextUnsolved(){
         for (int i = 0; i < dimensions;i++){
@@ -53,6 +53,11 @@ public class Soduku implements Game {
             }
         }
         return true;
+    }
+    
+    
+    public Space getSpaceAt(int x, int y){
+        return grids[x][y];
     }
     
     
@@ -83,6 +88,7 @@ public class Soduku implements Game {
         }
     }
     
+    
     public void printBoardTerm(){
         
         System.out.println();
@@ -111,5 +117,4 @@ public class Soduku implements Game {
         
     }
     
-
 }
