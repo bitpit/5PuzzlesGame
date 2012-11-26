@@ -2,25 +2,24 @@ public class Soduku implements Game { //A sudoku game board
 
     private SodukuSpace[][] grids; //the spaces
     private String name; //the name of the game: soduku (because i only learned how to spell later)
-    int dimensions;
-    
-    public Soduku (int d){
+    int[] dimensions;
+  
+    public Soduku (String fn){
         
-        dimensions = d;
+        FileLoader fl = new FileLoader(fn);
+        fl.stringChecker();
+        
+        dimensions = fl.getDimensions();
         name = "Soduku";
-        grids = new SodukuSpace[dimensions][dimensions];
-        for (int i = 0; i < dimensions; i++){
-            for (int j = 0; j<dimensions;j++){
-                grids[i][j] = new SodukuSpace(dimensions,i,j);
+        grids = new SodukuSpace[dimensions[0]][dimensions[1]];
+        for (int i = 0; i < dimensions[0]; i++){
+            for (int j = 0; j<dimensions[1];j++){
+                grids[i][j] = new SodukuSpace(dimensions[0],i,j);
             }
         }
         
-    } //makes soduku of d dimensions (d by d)
-    
-    
-    public Soduku (int d, String fn){
-        this(d);
-        loadFile(fn);
+        fl.loadToGame(this);
+        
     }//loads the file fn onto a d by d board
     
     
@@ -30,8 +29,8 @@ public class Soduku implements Game { //A sudoku game board
     
     
     public Space nextUnsolved(){
-        for (int i = 0; i < dimensions;i++){
-            for (int j = 0; j<dimensions;j++){
+        for (int i = 0; i < dimensions[0];i++){
+            for (int j = 0; j<dimensions[1];j++){
                 if (grids[i][j].getValue()==0) return grids[i][j];
             }
         }
@@ -40,8 +39,8 @@ public class Soduku implements Game { //A sudoku game board
     
     
     public boolean finished(){
-        for (int i = 0; i < dimensions;i++){
-            for (int j = 0; j<dimensions;j++){
+        for (int i = 0; i < dimensions[0];i++){
+            for (int j = 0; j<dimensions[1];j++){
                 if (grids[i][j].getValue()==0)
                     return false;
             }
@@ -60,22 +59,14 @@ public class Soduku implements Game { //A sudoku game board
     }
     
     
-    public void loadFile(String fn){
-        
-        FileLoader fl = new FileLoader(fn);
-        fl.stringChecker();
-        System.out.println(""+fl.loadToGame(this)+" loaded");
-       
-    }
-    
     
     public void printBoardTerm(){
         
         System.out.println();
         
-        for (int i = 0; i < dimensions; i++){
+        for (int i = 0; i < dimensions[0]; i++){
             
-            for (int j = 0; j < dimensions; j++){
+            for (int j = 0; j < dimensions[1]; j++){
                 
                 int valer = grids[i][j].getValue();
                 

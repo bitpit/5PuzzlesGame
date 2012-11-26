@@ -9,7 +9,7 @@ public class Total {
             System.exit(1);
         }
         
-        Game g = new Soduku(9,args[0]);
+        Game g = new Soduku(args[0]);
         
         Rule r = new SodukuRules(g);
         Solver s = new Solver(g);

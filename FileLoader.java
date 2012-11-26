@@ -84,5 +84,20 @@ public class FileLoader {
         
     }
     
+    public int[] getDimensions(){
+        if (s.hasNext()){
+            String t = s.nextLine();
+            int[] r = new int[t.length()/2];
+            
+            for (int i = 0;  i< (t.length()/2); i++){
+                r[i] = Integer.parseInt(t.substring(i*2,(i*2+1)));
+            }
+    
+            return r;
+        }
+        
+        else return null;
+    }
+    
 }
    
