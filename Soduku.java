@@ -1,13 +1,7 @@
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintStream;
-import java.io.FileReader;
-import java.util.Scanner;
+public class Soduku implements Game { //A sudoku game board
 
-public class Soduku implements Game {
-
-    private SodukuSpace[][] grids;
-    private String name;
+    private SodukuSpace[][] grids; //the spaces
+    private String name; //the name of the game: soduku (because i only learned how to spell later)
     int dimensions;
     
     public Soduku (int d){
@@ -21,18 +15,18 @@ public class Soduku implements Game {
             }
         }
         
-    }
+    } //makes soduku of d dimensions (d by d)
     
     
     public Soduku (int d, String fn){
         this(d);
         loadFile(fn);
-    }
+    }//loads the file fn onto a d by d board
     
     
     public String getName(){
         return name;
-    }
+    }//gives the game name
     
     
     public Space nextUnsolved(){
@@ -42,7 +36,7 @@ public class Soduku implements Game {
             }
         }
         return null;
-    }
+    }//gives the next unsolved spot
     
     
     public boolean finished(){
@@ -53,39 +47,25 @@ public class Soduku implements Game {
             }
         }
         return true;
-    }
+    }//sees if its finished yet
     
     
     public Space getSpaceAt(int x, int y){
         return grids[x][y];
+    }//gets the space at a particular place
+    
+   
+    public void setSpaceAt(int x, int y, int val){
+        grids[x][y].setValue(val);
     }
     
     
     public void loadFile(String fn){
         
-        Scanner s = null;
+        FileLoader fl = new FileLoader(fn);
+        fl.stringChecker();
+        System.out.println(""+fl.loadToGame(this)+" loaded");
        
-        try {
-            s = new Scanner(new FileReader(fn));
-        }
-        
-        catch (FileNotFoundException e){
-            System.out.println(e);
-            System.exit(1);
-        }
-           
-        s.useDelimiter(",");
-        
-        int r, c;
-        
-        while (s.hasNext()){
-            
-            r = s.nextInt();
-            c = s.nextInt();
-            grids[r][c].setValue(s.nextInt());
-            s.nextLine();
-            
-        }
     }
     
     
