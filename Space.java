@@ -8,5 +8,7 @@ public interface Space {
     int getValue();
     void reset();
     void setGroup(Group g);
+    Group getGroup();
+    boolean labeled = false;
     
 }

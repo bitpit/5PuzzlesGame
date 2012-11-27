@@ -58,6 +58,9 @@ public class Soduku implements Game { //A sudoku game board
         grids[x][y].setValue(val);
     }
     
+    public Group[] getGroup(){
+        return null;
+    }
     
     
     public void printBoardTerm(){

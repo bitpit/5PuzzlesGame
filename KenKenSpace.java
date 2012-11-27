@@ -4,18 +4,40 @@ public class KenKenSpace implements Space {
     private int x;
     private int y;
     private int[] possiblities;
+    private int resetVal;
     public Group group;
-    
+    public boolean labeled;
     
     public KenKenSpace (int dimensions, int ecks, int why) {
-        value = 0;
+        System.out.println(dimensions);
+        
+        labeled = false;
+        value = dimensions;
+        resetVal = value;
         x = ecks;
         y = why;
         possiblities = new int[dimensions];
-        for (int i =0; i < dimensions; i++)
+        
+        for (int i = dimensions-1; i > -1; i--)
             possiblities[i] = 1+i;
+        System.out.println(possiblities[0]);
     }
     
+    public static void main(String[] args){
+        
+        KenKenSpace s = new KenKenSpace(4,0,0);
+        for (int i = 0; i < 20; i++){
+            System.out.println(s.getValue());
+            s.nextPossibility();
+        }
+        
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        
+        for (int i = 3; i > -1; i--)
+            System.out.println(i+" gets "+(i+1));
+    }
             
     public int getX(){
         return x;
@@ -33,7 +55,11 @@ public class KenKenSpace implements Space {
     
     
     public void nextPossibility(){
-        value = possiblities[value];
+        labeled = true;
+        if (morePossibilitiesInternal()){
+            value = possiblities[value-2];
+        }
+        else reset();
     }
     
     
@@ -47,15 +73,26 @@ public class KenKenSpace implements Space {
     }
     
     
-    public boolean morePossibilities(){
-        if (value == possiblities.length)
+    public boolean morePossibilitiesInternal(){
+        if (value-2 < 0)
             return false;
         return true;
     }
     
+    public boolean morePossibilities(){
+        if (value == 1)
+            return false;
+        return true;
+    }
+    
+    public Group getGroup(){
+        return group;
+    }
+    
     
     public void reset(){
-        value = 0;
+        labeled = false;
+        value = resetVal;
     }
     
     public void setGroup(Group g){

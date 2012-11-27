@@ -4,6 +4,7 @@ public class SodukuSpace implements Space {
     private int x;
     private int y;
     private int[] possiblities;
+    boolean labeled;
     
     
     public SodukuSpace (int dimensions, int ecks, int why) {
@@ -52,6 +53,9 @@ public class SodukuSpace implements Space {
         return true;
     }
     
+    public Group getGroup(){
+        return null;
+    }
     
     public void reset(){
         value = 0;

@@ -27,6 +27,10 @@ public class Group {
         return spaces[s];
     }
     
+    public Space[] getSpaces(){
+        return spaces;
+    }
+    
     public String getOp(){
         return operator;
     }
