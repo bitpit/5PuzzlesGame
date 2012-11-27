@@ -9,7 +9,8 @@ public class Total {
             System.exit(1);
         }
         
-        Game g = new Soduku(args[0]);
+        //Game g = new Soduku(args[0]);
+        Game g = new KenKen(args[0]);
         
         Rule r = new SodukuRules(g);
         Solver s = new Solver(g);
@@ -20,8 +21,8 @@ public class Total {
         System.out.println();
         
         
-        s.label();
-        g.printBoardTerm();
+        //s.label();
+        //g.printBoardTerm();
         
         
     }

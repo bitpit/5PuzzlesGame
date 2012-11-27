@@ -1,12 +1,13 @@
-public class SodukuSpace implements Space {
+public class KenKenSpace implements Space {
     
     private int value;
     private int x;
     private int y;
     private int[] possiblities;
+    public Group group;
     
     
-    public SodukuSpace (int dimensions, int ecks, int why) {
+    public KenKenSpace (int dimensions, int ecks, int why) {
         value = 0;
         x = ecks;
         y = why;
@@ -58,7 +59,7 @@ public class SodukuSpace implements Space {
     }
     
     public void setGroup(Group g){
-        Group group = g;
+        group = g;
     }
 
 }

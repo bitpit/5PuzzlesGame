@@ -63,6 +63,7 @@ public class FileLoader {
         
         while (s.hasNext()){
             
+           
             r = s.nextInt();
             c = s.nextInt();
             g.setSpaceAt(r,c,s.nextInt());
@@ -97,6 +98,44 @@ public class FileLoader {
         }
         
         else return null;
+    }
+    
+    public Group[] loadKenKen(Game g){
+        
+        int r, c;
+        String op;
+        
+        s.useDelimiter(",");
+        int gr = s.nextInt();
+        s.nextLine();
+        
+        
+        Group[] groups = new Group[gr];
+        
+        for (int i = 0; i < gr; i ++){
+            
+            String strong = s.nextLine();
+            String[] strang = strong.split(",");
+            
+            int noOfSpaces = Integer.parseInt(strang[2]);
+                        
+            groups[i] = new Group(Integer.parseInt(strang[0]),strang[1],
+                                noOfSpaces);
+            
+            for (int j = 0; j<noOfSpaces;j++){
+                r = s.nextInt();
+                c = s.nextInt();
+                g.setSpaceAt(r,c,0);
+                groups[i].addSpace(g.getSpaceAt(r,c));
+                g.getSpaceAt(r,c).setGroup(groups[i]);
+                
+                s.nextLine();
+            }
+            
+        }
+        
+        return groups;
+        
     }
     
 }
