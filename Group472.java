@@ -19,10 +19,6 @@ public class Group472 extends Group {
     }
     
     
-    public String[] getRight(){
-        return right;
-    }
-    
     public void addSpace(Space s){
         for (int i = 0; i<spaces.length; i++){
             if (spaces[i]==null){
@@ -30,6 +26,11 @@ public class Group472 extends Group {
                 return;
             }
         }
+    }
+    
+    
+    public String[] getRight(){
+        return right;
     }
     
     
@@ -42,6 +43,16 @@ public class Group472 extends Group {
     public void setRight(String l, String n){
         right[0]=l;
         right[1]=n;
+    }
+    
+    
+    public Space getSpace(int s){
+        return spaces[s];
+    }
+    
+    
+    public Space[] getSpaces(){
+        return spaces;
     }
     
 }

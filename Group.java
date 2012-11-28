@@ -59,4 +59,24 @@ public class Group {
         return false;
     }
     
+    
+    public void setLeft(String a, String b){
+        
+    }
+    
+
+    public void setRight(String a, String b){
+    
+    }
+    
+    
+    public String[] getLeft(){
+        return null;
+    }
+    
+    
+    public String[] getRight(){
+        return null;
+    }
+    
 }

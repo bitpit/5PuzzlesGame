@@ -15,8 +15,10 @@ public class Total {
         
         if (str[1].substring(0,5).equals("kenke"))
             g = new KenKen(args[0]);
-        else if (str[1].substring(0,4).equals("page"))
+        else if (str[1].substring(0,4).equals("page")){
             g = new Page472(args[0]);
+            g.printBoardTerm();
+        }
         else {
             g = new Soduku(args[0]);
             g.printBoardTerm();

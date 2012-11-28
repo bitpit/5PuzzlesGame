@@ -163,22 +163,55 @@ public class FileLoader {
         
         for (int j = 0; j < (groups.length/2); j++){
             for (int k = 0; k < groups.length/2; k++){
-                groups[j].addSpace(g.getSpaceAt(j,k));
+                groups[j].addSpace(g.getSpaceAt(k,j));
+                g.getSpaceAt(k,j).setColumn(groups[j]);
             }
         }
         
         
-        for (int j = ((groups.length/2)-1); j < groups.length; j++){
+        for (int j = groups.length/2; j < groups.length; j++){
             for (int k = 0; k < groups.length/2; k++){
-                groups[j].addSpace(g.getSpaceAt(k,j%dims));
+                groups[j].addSpace(g.getSpaceAt(j%dims,k));
+                g.getSpaceAt(j%dims,k).setRow(groups[j]);
             }
         }
         
-        System.out.println(s.nextInt());
+        length = s.nextInt();
         s.nextLine();
-        System.out.println(s.nextLine());
+                
+        for (int i = 0; i < length; i++){
+            str = s.nextLine();
+            strong = str.split(",");
+            
+            Group grup = g.getSpaceAt(Integer.parseInt(strong[0]),Integer.parseInt(strong[1])).getColumn();
+            
+            if (Integer.parseInt(strong[0]) > 0){
+                grup.setRight(strong[2],strong[3]);
+            }
+            else {
+                grup.setLeft(strong[2],strong[3]);
+            }
+
+        }
         
-        return null;
+        length = s.nextInt();
+        s.nextLine();
+        
+        for (int i = 0; i < length; i++){
+            str = s.nextLine();
+            strong = str.split(",");
+                        
+            Group grup = g.getSpaceAt(Integer.parseInt(strong[0]),Integer.parseInt(strong[1])).getRow();
+            
+            if (Integer.parseInt(strong[1]) > 0){
+                grup.setRight(strong[2],strong[3]);
+            }
+            else {
+                grup.setLeft(strong[2],strong[3]);
+            }
+        }
+        
+        return groups;
         
     }
     

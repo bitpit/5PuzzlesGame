@@ -10,5 +10,10 @@ public interface Space {
     void setGroup(Group g);
     Group getGroup();
     boolean labeled = false;
+    void setRow(Group g);
+    void setColumn(Group g);
+    Group getRow();
+    Group getColumn();
+    
     
 }

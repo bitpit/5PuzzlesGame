@@ -67,5 +67,25 @@ public class SodukuSpace implements Space {
     public void setGroup(Group g){
         Group group = g;
     }
+    
+    
+    public void setRow(Group g){
+        
+    }
+    
+    
+    public void setColumn(Group g){
+        
+    }
+    
+    
+    public Group getRow(){
+        return null;
+    }
+    
+    
+    public Group getColumn(){
+        return null;
+    }
 
 }

@@ -23,6 +23,11 @@ public class KenKenSpace implements Space {
     }
     
     
+    public KenKenSpace(){
+        value = 0;
+    }
+    
+    
     public static void main(String[] args){
         
         KenKenSpace s = new KenKenSpace(4,0,0);
@@ -93,6 +98,26 @@ public class KenKenSpace implements Space {
     
     public void setGroup(Group g){
         group = g;
+    }
+    
+    
+    public void setRow(Group g){
+        
+    }
+    
+    
+    public void setColumn(Group g){
+        
+    }
+    
+    
+    public Group getRow(){
+        return null;
+    }
+    
+    
+    public Group getColumn(){
+        return null;
     }
 
 }
