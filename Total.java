@@ -15,18 +15,22 @@ public class Total {
         
         if (str[1].substring(0,5).equals("kenke"))
             g = new KenKen(args[0]);
+        else if (str[1].substring(0,4).equals("page"))
+            g = new Page472(args[0]);
         else {
             g = new Soduku(args[0]);
             g.printBoardTerm();
             System.out.println();
         }   
-                        
-        Solver s = new Solver(g);
-        s.label();
-        
-        System.out.println();
-        g.printBoardTerm();
-        System.out.println();
+            
+        if (!str[1].substring(0,4).equals("page")){
+            Solver s = new Solver(g);
+            s.label();
+            
+            System.out.println();
+            g.printBoardTerm();
+            System.out.println();
+        }
         
         
     }

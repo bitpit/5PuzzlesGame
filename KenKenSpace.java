@@ -11,13 +11,13 @@ public class KenKenSpace implements Space {
     public KenKenSpace (int dimensions, int ecks, int why) {
                
         labeled = false;
-        value = 1;
+        value = 0;
         resetVal = value;
         x = ecks;
         y = why;
         possiblities = new int[dimensions];
         
-        for (int i =0; i < dimensions; i++)
+        for (int i = 0; i < dimensions; i++)
             possiblities[i] = 1+i;
         
     }

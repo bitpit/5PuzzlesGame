@@ -10,6 +10,10 @@ public class Group {
         operator = op;
     }
     
+    public Group(){
+        total = 0;
+    }
+    
     
     public void addSpace(Space s){
         for (int i = 0; i<spaces.length; i++){

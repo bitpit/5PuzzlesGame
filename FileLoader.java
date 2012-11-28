@@ -107,7 +107,7 @@ public class FileLoader {
     }//used by game to retrieve the dimensions of the board
     
     
-    public Group[] loadKenKen(Game g){
+    private Group[] loadKenKen(Game g){
         
         int r, c;
         String op;
@@ -143,6 +143,62 @@ public class FileLoader {
         return groups;
         
     }
+    
+    
+    public Group[] loadPage472(Game g){
+        
+        s.useDelimiter(",");
+        
+        String str;
+        String[] strong;
+        int length;
+        
+        Group472[] groups = new Group472[(g.getDimensions()[0]*2)];
+        
+        for (int i = 0; i < groups.length; i++){
+            groups[i] = new Group472(g.getDimensions()[0]);
+        }
+        
+        
+        for (int j = 0; j < (groups.length/2); j++){
+            for (int k = 0; k < groups.length; k++){
+                groups[j].addSpace(g.getSpaceAt(j,k));
+            }
+        }
+        
+        
+        for (int j = ((groups.length/2)-1); j < groups.length; j++){
+            for (int k = 0; k < groups.length; k++){
+                groups[j].addSpace(g.getSpaceAt(k,j));
+            }
+        }
+        
+        System.out.println(s.nextInt());
+        s.nextLine();
+        System.out.println(s.nextLine());
+        
+        return null;
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
 }
    
