@@ -149,6 +149,7 @@ public class FileLoader {
         
         s.useDelimiter(",");
         
+        int dims = g.getDimensions()[0];
         String str;
         String[] strong;
         int length;
@@ -161,15 +162,15 @@ public class FileLoader {
         
         
         for (int j = 0; j < (groups.length/2); j++){
-            for (int k = 0; k < groups.length; k++){
+            for (int k = 0; k < groups.length/2; k++){
                 groups[j].addSpace(g.getSpaceAt(j,k));
             }
         }
         
         
         for (int j = ((groups.length/2)-1); j < groups.length; j++){
-            for (int k = 0; k < groups.length; k++){
-                groups[j].addSpace(g.getSpaceAt(k,j));
+            for (int k = 0; k < groups.length/2; k++){
+                groups[j].addSpace(g.getSpaceAt(k,j%dims));
             }
         }
         
