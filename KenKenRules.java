@@ -76,7 +76,7 @@ public class KenKenRules implements Rule  {
                 }
             }
         }
-        else cumulative = 1;
+        else cumulative = s.getValue();
         
         if (g.anyEmpty())
             return true;
