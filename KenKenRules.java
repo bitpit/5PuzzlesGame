@@ -39,6 +39,7 @@ public class KenKenRules implements Rule  {
         return true;
     }
     
+    
     public boolean shape(Space s){
         
         Group g = s.getGroup();
@@ -46,6 +47,7 @@ public class KenKenRules implements Rule  {
         Space[] spaces = g.getSpaces();
         
         int cumulative = spaces[0].getValue();
+        int cum2 = 0;
                 
       
         if (op.equals("*")){
@@ -65,14 +67,16 @@ public class KenKenRules implements Rule  {
         else if (op.equals("-")){
             for (int i = 1; i<spaces.length;i++){
                 int n = spaces[i].getValue();
-                cumulative-=n;
+                cum2 = n - cumulative;
+                cumulative = cumulative - n;
             }
         }
         else if (op.equals("/")){
             for (int i = 1; i<spaces.length;i++){
                 if (spaces[i].getValue()!=0){
                     int n = spaces[i].getValue();
-                    cumulative/=n;
+                    cum2 = n/cumulative;
+                    cumulative = cumulative/n;
                 }
             }
         }
@@ -81,12 +85,13 @@ public class KenKenRules implements Rule  {
         if (g.anyEmpty())
             return true;
         
-        if (cumulative == g.getTotal())
+        if (cumulative == g.getTotal() || cum2 == g.getTotal())
             return true;
                     
         return false;
     }
         
+    
     public boolean constraints(Space s){
         
         if (shape(s) && row(s) && column(s))

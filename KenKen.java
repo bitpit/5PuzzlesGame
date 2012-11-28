@@ -82,7 +82,7 @@ public class KenKen implements Game { //A sudoku game board
             for (int j = 0; j < group[i].length(); j++){
                 
                 Space s = group[i].getSpace(j);
-                System.out.println("   Space ("+s.getX()+", "+s.getY()+") of Group "+i);
+                System.out.println("   Space ("+s.getX()+", "+s.getY()+") of Group "+(i+1));
                 
                 
             }
@@ -113,6 +113,6 @@ public class KenKen implements Game { //A sudoku game board
             
         }
         
-    }
+    }//printBoardReal*/
     
 }
