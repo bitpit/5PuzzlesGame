@@ -16,25 +16,12 @@ public class KenKen implements Game { //A sudoku game board
         for (int i = 0; i < dimensions[0]; i++){
             for (int j = 0; j<dimensions[1];j++){
                 grids[i][j] = new KenKenSpace(dimensions[0],i,j);
-                grids[i][j].setValue(dimensions[0]);
+                grids[i][j].setValue(0);
             }
         }
-        
-        System.out.println("********");
-        
-        for (int i = 0; i<grids.length;i++){
-            for (int j = 0; j<grids.length;j++){
-                System.out.println(grids[i][j].getValue());
-            }
-        }
-        
-        System.out.println("*******");
         
         group = fl.loadKenKen(this);
-        
-        System.out.println(group[0].getSpace(0).getValue());
-        System.out.println(group[0].getSpace(1).getValue());
-        
+                
     }//loads the file fn onto a d by d board
     
     
@@ -54,9 +41,9 @@ public class KenKen implements Game { //A sudoku game board
     
     
     public boolean finished(){
-        for (Group g : group){
-            for (Space s : g.getSpaces()){
-                if (!s.labeled)
+        for (int i = 0; i < dimensions[0]; i++){
+            for (int j = 0; j<dimensions[0]; j++){
+                if (grids[i][j].getValue() == 0)
                     return false;
             }
                 
@@ -79,8 +66,12 @@ public class KenKen implements Game { //A sudoku game board
         return group;
     }
     
+    public int[] getDimensions(){
+        return dimensions;
+    }
     
-   /* public void printBoardTerm(){
+    
+    /*public void printBoardTerm(){
         
         System.out.println();
         
@@ -100,7 +91,7 @@ public class KenKen implements Game { //A sudoku game board
         
     }//printboard*/
     
-    public void printBoardTerm(){
+   public void printBoardTerm(){
         
         System.out.println();
         

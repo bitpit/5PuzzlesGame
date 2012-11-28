@@ -9,25 +9,23 @@ public class KenKenSpace implements Space {
     public boolean labeled;
     
     public KenKenSpace (int dimensions, int ecks, int why) {
-        System.out.println(dimensions);
-        
+               
         labeled = false;
-        value = dimensions;
+        value = 1;
         resetVal = value;
         x = ecks;
         y = why;
         possiblities = new int[dimensions];
         
-        for (int i = dimensions-1; i > -1; i--)
+        for (int i =0; i < dimensions; i++)
             possiblities[i] = 1+i;
-        System.out.println(possiblities[0]);
+        
     }
     
     public static void main(String[] args){
         
         KenKenSpace s = new KenKenSpace(4,0,0);
         for (int i = 0; i < 20; i++){
-            System.out.println(s.getValue());
             s.nextPossibility();
         }
         
@@ -56,8 +54,8 @@ public class KenKenSpace implements Space {
     
     public void nextPossibility(){
         labeled = true;
-        if (morePossibilitiesInternal()){
-            value = possiblities[value-2];
+        if (morePossibilities()){
+            value = possiblities[value];
         }
         else reset();
     }
@@ -73,14 +71,9 @@ public class KenKenSpace implements Space {
     }
     
     
-    public boolean morePossibilitiesInternal(){
-        if (value-2 < 0)
-            return false;
-        return true;
-    }
     
     public boolean morePossibilities(){
-        if (value == 1)
+        if (value == possiblities.length)
             return false;
         return true;
     }
@@ -92,7 +85,7 @@ public class KenKenSpace implements Space {
     
     public void reset(){
         labeled = false;
-        value = resetVal;
+        value = 0;
     }
     
     public void setGroup(Group g){

@@ -125,10 +125,9 @@ public class FileLoader {
             for (int j = 0; j<noOfSpaces;j++){
                 r = s.nextInt();
                 c = s.nextInt();
-                g.setSpaceAt(r,c,0);
                 groups[i].addSpace(g.getSpaceAt(r,c));
                 g.getSpaceAt(r,c).setGroup(groups[i]);
-                
+                                                
                 s.nextLine();
             }
             

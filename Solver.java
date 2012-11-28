@@ -19,16 +19,14 @@ public class Solver {
         
       
         if (game.finished()){
-            System.out.println("what");
             if (rules.allConstraints())
                 return true;
         }
         
         Space s = game.nextUnsolved();
-        System.out.println(s.getX()+" x, "+s.getY());
+      //  System.out.println(s.getX()+" x, "+s.getY());
                 
         while (s.morePossibilities()){
-            System.out.println("checking");
             s.nextPossibility();
             if (rules.constraints(s) && label()){
             
@@ -39,10 +37,6 @@ public class Solver {
         s.reset();
         
         return false;
-    }
-    
-    public String getType(){
-        return type;
     }
 
 }

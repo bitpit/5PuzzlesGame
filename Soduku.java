@@ -91,4 +91,8 @@ public class Soduku implements Game { //A sudoku game board
         
     }
     
+    public int[] getDimensions(){
+        return dimensions;
+    }
+    
 }

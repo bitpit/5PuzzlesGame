@@ -39,4 +39,13 @@ public class Group {
         return total;
     }
     
+    public boolean anyEmpty(){
+        for (Space s : spaces){
+            if (s.getValue() == 0){
+                return true;
+            }
+        }
+        return false;
+    }
+    
 }

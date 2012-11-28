@@ -7,6 +7,7 @@ public interface Game {
     Space getSpaceAt(int x, int y);
     void setSpaceAt(int x, int y, int val);
     Group[] getGroup();
+    int[] getDimensions();
     
        
 }
