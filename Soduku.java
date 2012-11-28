@@ -18,7 +18,7 @@ public class Soduku implements Game { //A sudoku game board
             }
         }
         
-        fl.loadToGame(this);
+        fl.load(this);
         
     }//loads the file fn onto a d by d board
     
@@ -58,7 +58,8 @@ public class Soduku implements Game { //A sudoku game board
         grids[x][y].setValue(val);
     }
     
-    public Group[] getGroup(){
+   
+    public Group[] getGroups(){
         return null;
     }
     
@@ -90,6 +91,7 @@ public class Soduku implements Game { //A sudoku game board
         }
         
     }
+    
     
     public int[] getDimensions(){
         return dimensions;

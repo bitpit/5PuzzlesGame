@@ -22,6 +22,7 @@ public class KenKenSpace implements Space {
         
     }
     
+    
     public static void main(String[] args){
         
         KenKenSpace s = new KenKenSpace(4,0,0);
@@ -37,6 +38,7 @@ public class KenKenSpace implements Space {
             System.out.println(i+" gets "+(i+1));
     }
             
+    
     public int getX(){
         return x;
     }
@@ -71,12 +73,12 @@ public class KenKenSpace implements Space {
     }
     
     
-    
     public boolean morePossibilities(){
         if (value == possiblities.length)
             return false;
         return true;
     }
+    
     
     public Group getGroup(){
         return group;
@@ -87,6 +89,7 @@ public class KenKenSpace implements Space {
         labeled = false;
         value = 0;
     }
+    
     
     public void setGroup(Group g){
         group = g;

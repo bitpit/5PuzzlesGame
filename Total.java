@@ -9,9 +9,18 @@ public class Total {
             System.exit(1);
         }
         
+        Game g;
         
-        Game g = new KenKen(args[0]);
-                
+        String[] str = args[0].split("/");
+        
+        if (str[1].substring(0,5).equals("kenke"))
+            g = new KenKen(args[0]);
+        else {
+            g = new Soduku(args[0]);
+            g.printBoardTerm();
+            System.out.println();
+        }   
+                        
         Solver s = new Solver(g);
         s.label();
         

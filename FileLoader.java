@@ -52,7 +52,7 @@ public class FileLoader {
             
         }
         
-    }
+    }//makes sure the file name string is valid
     
     
     private void loadSoduku(Game g){
@@ -71,19 +71,25 @@ public class FileLoader {
             
         }
         
-    }
+    }//loads soduku
     
     
-    public boolean loadToGame(Game g){
+    public Group[] load(Game g){
         
         if (g.getName().equals("Soduku")){ 
             loadSoduku(g);
-            return true;
+            return null;
         }
         
-        return false;
+        else if (g.getName().equals("KenKen")){
+            return loadKenKen(g);
+            
+        }
         
-    }
+        return null;
+        
+    }//load dispatcher 
+    
     
     public int[] getDimensions(){
         if (s.hasNext()){
@@ -98,7 +104,8 @@ public class FileLoader {
         }
         
         else return null;
-    }
+    }//used by game to retrieve the dimensions of the board
+    
     
     public Group[] loadKenKen(Game g){
         

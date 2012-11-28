@@ -53,13 +53,16 @@ public class SodukuSpace implements Space {
         return true;
     }
     
+    
     public Group getGroup(){
         return null;
     }
     
+    
     public void reset(){
         value = 0;
     }
+    
     
     public void setGroup(Group g){
         Group group = g;

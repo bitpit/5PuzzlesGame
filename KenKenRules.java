@@ -102,7 +102,7 @@ public class KenKenRules implements Rule  {
     
     public boolean allConstraints(){
         
-        Group[] g = game.getGroup();
+        Group[] g = game.getGroups();
         
         for (int i = 0; i < g.length; i++){
             if (!shape(g[i].getSpace(0)))

@@ -2,6 +2,7 @@ public class SodukuRules implements Rule {
     
     private Game soduku;
     
+    
     public SodukuRules(Game g){
         soduku = g;
     }

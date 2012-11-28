@@ -10,6 +10,7 @@ public class Group {
         operator = op;
     }
     
+    
     public void addSpace(Space s){
         for (int i = 0; i<spaces.length; i++){
             if (spaces[i]==null){
@@ -19,25 +20,31 @@ public class Group {
         }
     }
     
+    
     public int length(){
         return spaces.length;
     }
+    
     
     public Space getSpace(int s){
         return spaces[s];
     }
     
+    
     public Space[] getSpaces(){
         return spaces;
     }
     
+    
     public String getOp(){
         return operator;
     }
+    
 
     public int getTotal(){
         return total;
     }
+    
     
     public boolean anyEmpty(){
         for (Space s : spaces){

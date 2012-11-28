@@ -1,10 +1,10 @@
 public class KenKen implements Game { //A sudoku game board
-
+    
     private KenKenSpace[][] grids; //the spaces
     private String name; //the name of the game: soduku (because i only learned how to spell later)
     int[] dimensions;
-    public Group[] group;
-  
+    public Group[] groups;
+    
     public KenKen (String fn){
         
         FileLoader fl = new FileLoader(fn);
@@ -20,8 +20,8 @@ public class KenKen implements Game { //A sudoku game board
             }
         }
         
-        group = fl.loadKenKen(this);
-                
+        groups = fl.load(this);
+        
     }//loads the file fn onto a d by d board
     
     
@@ -46,10 +46,10 @@ public class KenKen implements Game { //A sudoku game board
                 if (grids[i][j].getValue() == 0)
                     return false;
             }
-                
+            
         }
         return true;
-     
+        
     }
     
     
@@ -57,41 +57,44 @@ public class KenKen implements Game { //A sudoku game board
         return grids[x][y];
     }//gets the space at a particular place
     
-   
+    
     public void setSpaceAt(int x, int y, int val){
         grids[x][y].setValue(val);
     }
     
-    public Group[] getGroup(){
-        return group;
+    
+    public Group[] getGroups(){
+        return groups;
     }
+    
     
     public int[] getDimensions(){
         return dimensions;
     }
     
     
-    /*public void printBoardTerm(){
+    private void boardFileDebugger(){
         
         System.out.println();
         
-        for (int i = 0; i < group.length; i++){
+        for (int i = 0; i < groups.length; i++){
             
-            System.out.println("Group "+(i+1)+": "+group[i].length()+" elts "+group[i].getOp()+" to "+group[i].getTotal());
+            System.out.println("Group "+(i+1)+": "+groups[i].length()+" elts "+groups[i].getOp()+" to "+groups[i].getTotal());
             
-            for (int j = 0; j < group[i].length(); j++){
+            for (int j = 0; j < groups[i].length(); j++){
                 
-                Space s = group[i].getSpace(j);
+                Space s = groups[i].getSpace(j);
                 System.out.println("   Space ("+s.getX()+", "+s.getY()+") of Group "+(i+1));
                 
                 
             }
-                
+            
         }
         
-    }//printboard*/
+    }//boardDebugger*/
     
-   public void printBoardTerm(){
+    
+    public void printBoardTerm(){
         
         System.out.println();
         
@@ -106,7 +109,7 @@ public class KenKen implements Game { //A sudoku game board
                 else
                     System.out.printf("%3s","0");
                 
-                                
+                
             }
             
             System.out.println();
