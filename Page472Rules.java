@@ -60,108 +60,24 @@ public class Page472Rules implements Rule  {
     }
     
     
-    private boolean rowShapeFromRight(Group row, String[] right, int trackFRight, Space s, boolean column){
-        int tracker = 0;
-        int pos = Integer.parseInt(right[1]);
-        
-        int blanksBefore = emptysCount(s, column, false);
-        
-        for (int i = trackFRight; i > -1; i--){
-            Space q;
-            if (!column)
-                q = game.getSpaceAt(s.getX(),i);
-            else
-                q = game.getSpaceAt(i,s.getY());
-            if (q.getValue() >= 2)
-                tracker++;
-            if (keys[q.getValue()].equalsIgnoreCase(right[0]) &&
-                tracker != pos && blanksBefore < pos){
-                return false;
-            }
-        }
-        
-        return true;
-    }
-    
-     
-    private boolean rowShapeFromLeft(Group row, String[] left, int trackFLeft, Space s, boolean column){
-        
-        int tracker = 0;
-        int pos = Integer.parseInt(left[1]);
-        
-        int blanksBefore = emptysCount(s, column, true);
-        
-        for (int i = 0; i < dimensions; i++){
-            Space q;
-            if (!column)
-                q = game.getSpaceAt(s.getX(),i);
-            else
-                q = game.getSpaceAt(i,s.getY());
-            if (q.getValue() >= 2)
-                tracker++;
-            if (keys[q.getValue()].equalsIgnoreCase(left[0]) &&
-                tracker == pos){
-                return true;
-            }
-        }
-        return false;
-    }
-    
-    private int emptysCount(Space s, boolean column, boolean front){
-        
-        boolean firstLetter = false;
-        int blanksBefore = 0;
-        
-        if (front){
-            for (int i = 0; i < dimensions; i++){
-                Space q;
-                if (!column) 
-                    q = game.getSpaceAt(s.getX(),i);
-                else
-                    q = game.getSpaceAt(i,s.getY());
-                if (q.getValue() <= 1 && !firstLetter)
-                    blanksBefore++;
-                else if (q.getValue() > 1)
-                    firstLetter = true;
-            }
-        }
-        else
-            for (int i = dimensions-1; i > -1; i--){
-                Space q;
-                if (!column) 
-                    q = game.getSpaceAt(s.getX(),i);
-                else
-                    q = game.getSpaceAt(i,s.getY());
-                if (q.getValue() <= 1 && !firstLetter)
-                    blanksBefore++;
-                else if (q.getValue() > 1)
-                    firstLetter = true;
-            }
-        return blanksBefore;
-    }
-    
-    
     public boolean rowShape(Space s){
                 
         Group row = s.getRow();
         String[] right = row.getRight();
         String[] left = row.getLeft();
         
-        int trackFLeft = 0;
-        int trackFRight = dimensions-1;
-        
         if (left[0] == null && right[0] != null){//only track from right
-            if (rowShapeFromRight(row, right, trackFRight, s, false))
+            if (totalShapeChecker(row, right, s, true, false))
                 return true;
         }
         
         else if (left[0] != null && right[0]==null){//only track from left
-            if (rowShapeFromLeft(row,left,trackFLeft, s, false))
+            if (totalShapeChecker(row,left, s, false, false))
                 return true;
         }
         else {  //track from both
-            if (rowShapeFromLeft(row,left,trackFLeft,s,false) &&
-                (rowShapeFromRight(row, right, trackFRight, s,false))){
+            if (totalShapeChecker(row,left,s,false,false) &&
+                (totalShapeChecker(row, right, s, true, false))){
                 return true;
             }
                 
@@ -177,25 +93,105 @@ public class Page472Rules implements Rule  {
         String[] bottom = column.getRight();
         String[] top = column.getLeft();
         
-        int trackFTop = 0;
-        int trackFBottom = dimensions-1;
-        
         if (top[0] != null && bottom[0] == null){//only track from right
-            if (rowShapeFromLeft(column, top, trackFTop, s, true))
+            if (totalShapeChecker(column, top, s, false, true))
                 return true;
         }
         
         else if (top[0] == null && bottom[0]!=null){//only track from left
-            if (rowShapeFromRight(column,bottom,trackFBottom, s, true))
+            if (totalShapeChecker(column,bottom, s, true, true))
                 return true;
         }
         else {//track from both
-            if (rowShapeFromLeft(column, top, trackFTop, s, true) &&
-                (rowShapeFromRight(column,bottom,trackFBottom, s, true)))
+            if (totalShapeChecker(column, top, s, false, true) &&
+                (totalShapeChecker(column,bottom, s, true, true)))
                 return true;
         }
         
         return false;
+    }
+    
+    
+    private boolean totalShapeChecker(Group group, String[] rulez, 
+                                      Space s, boolean fromBottom, boolean column){
+        
+        int rulezInt = Integer.parseInt(rulez[1]);
+        int letterCount = countLetters(column, s);
+        
+        if (fromBottom){//starting from right or from bottom
+            if (letterCount < 4){
+                return true;
+            }
+            else if (letterCount == 4){
+                Space q;
+                q = getNthLetter(rulezInt, s, column, fromBottom);
+                if (keys[q.getValue()].equals(rulez[0]))
+                    return true;
+            }
+        }
+        
+        else {//starting from left or from top
+            for (int i = 0; i < game.getDimensions()[0]; i++){
+                if (countLetters(column,s) >= rulezInt){
+                    Space q;
+                    q = getNthLetter(rulezInt, s, column, fromBottom);
+                    if (keys[q.getValue()].equals(rulez[0]))
+                        return true;
+                }
+                else if (countLetters(column,s) < rulezInt)
+                    return true;
+            }
+        }
+        return false;
+    }
+    
+    
+    
+    
+    private Space getNthLetter(int n, Space s, boolean column, boolean fromBottom){
+        int tracky = 0;
+        Space q;
+     
+        if (!fromBottom){
+            for (int i = 0; i < game.getDimensions()[0]; i++){
+                if (!column)
+                    q = game.getSpaceAt(s.getX(),i);
+                else
+                    q = game.getSpaceAt(i,s.getY());
+                if (q.getValue() >= 2)
+                    tracky++;
+                if (tracky == n)
+                    return q;
+            }
+        }
+        else {
+            for (int i = game.getDimensions()[0]-1; i > -1; i --){
+                if (!column)
+                    q = game.getSpaceAt(s.getX(),i);
+                else
+                    q = game.getSpaceAt(i,s.getY());
+                if (q.getValue() >= 2)
+                    tracky++;
+                if (tracky == n)
+                    return q;
+            }
+        }
+        return null;
+    }
+    
+    
+    private int countLetters(boolean column, Space s){
+        int numbero = 0;
+        for (int i = game.getDimensions()[0]-1; i > -1; i --){
+            Space q;
+            if (!column)
+                q = game.getSpaceAt(s.getX(),i);
+            else
+                q = game.getSpaceAt(i,s.getY());
+            if (q.getValue() >= 2)
+                numbero++;
+        }       
+        return numbero;
     }
     
     
@@ -227,31 +223,4 @@ public class Page472Rules implements Rule  {
     }
     
     
-    private boolean anyEmpty(Space s, boolean row){
-        for (int i = 0; i < dimensions; i++){
-            Space qbert;
-            if (row)
-                qbert = game.getSpaceAt(i,s.getY());
-            else
-                qbert = game.getSpaceAt(s.getX(),i);
-            if (qbert.getValue() == 0)
-                return true;
-        }
-        return false;
-    }
-    
-    
-    private boolean allEmpty(Space s, boolean row){
-        for (int i = 0; i < dimensions; i++){
-            Space qbert;
-            if (row)
-                qbert = game.getSpaceAt(i,s.getY());
-            else
-                qbert = game.getSpaceAt(s.getX(),i);
-            if (qbert.getValue() != 0)
-                return false;
-        }
-        return true;
-    }
-
 }

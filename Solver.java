@@ -24,8 +24,6 @@ public class Solver extends Thread {
         
       
         if (game.finished()){
-            System.out.println("finished");
-            System.out.println("all constraints? "+rules.allConstraints());
             if (rules.allConstraints())
                 return true;
             else
@@ -36,14 +34,10 @@ public class Solver extends Thread {
         
         Group row = s.getRow();
         Group column = s.getColumn();
-                
-        //game.printBoardTerm();
-        
+                    
         while (s.morePossibilities()){
-            //game.printBoardTerm();
             s.nextPossibility();
             if (rules.constraints(s) && label()){
-            
                 return true;
             }
         }

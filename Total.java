@@ -28,9 +28,10 @@ public class Total {
         //if (!str[1].substring(0,4).equals("page")){
         
         Solver s = new Solver(g);
-        System.out.println(s.label()+" label success");
+        s.label();
         System.out.println();
         g.printBoardTerm();
+        System.out.println();
             
     }
 }
