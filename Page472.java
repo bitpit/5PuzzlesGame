@@ -5,7 +5,7 @@ public class Page472 implements Game {
     private String name; //the name of the game: soduku (because i only learned how to spell later)
     int[] dimensions;
     public Group[] groups;
-    private String[] keys = {"-","0","A","B","C","D"};
+    private String[] keys = {"0","-","A","B","C","D"};
     
     public Page472 (String fn){
         
@@ -74,60 +74,6 @@ public class Page472 implements Game {
     }
     
     
-    public void printBoeardTerm(){
-        System.out.println();
-        
-                
-        for (int i = 0; i < groups.length/2; i++){
-            Space s = groups[i].getSpace(0);
-            System.out.println("Group "+i+" at Space "+s.getX()+", "+s.getY()+" constraints:");
-            System.out.println("    -Constraints Top: "+groups[i].getLeft()[0]+groups[i].getLeft()[1]);
-            System.out.println("    -Constraints Bottom: "+groups[i].getRight()[0]+groups[i].getRight()[1]);
-        }
-        
-        System.out.println();
-        System.out.println();
-        
-        for (int i = 6; i < groups.length; i++){
-            Space s = groups[i].getSpace(0);
-            System.out.println("Group at Space "+s.getX()+", "+s.getY()+" constraints:");
-            System.out.println("    -Constraints Left: "+groups[i].getLeft()[0]+groups[i].getLeft()[1]);
-            System.out.println("    -Constraints Right: "+groups[i].getRight()[0]+groups[i].getRight()[1]);
-        }
-    }
-    
-    
-    public void prinkjtBoardTerm(){
-        System.out.println();
-        
-        
-        for (int i = 0; i < (groups.length/2); i++){
-            Space s = groups[i].getSpace(0);
-            System.out.println("Group "+i+" at Space "+s.getX()+", "+s.getY()+" constraints:");
-            System.out.println("    -Constraints Top: "+groups[i].getLeft()[0]+groups[i].getLeft()[1]);
-            System.out.println("    -Constraints Bottom: "+groups[i].getRight()[0]+groups[i].getRight()[1]);
-            for (int j = 0; j < groups[i].getSpaces().length; j++){
-                Space qbert = groups[i].getSpaces()[j];
-                System.out.println("           - Space ("+qbert.getX()+", "+qbert.getY()+")");
-            }
-        }
-        
-        System.out.println();
-        System.out.println();
-        
-        for (int i = 6; i < groups.length; i++){
-            Space s = groups[i].getSpace(0);
-            System.out.println("Group at Space "+s.getX()+", "+s.getY()+" constraints:");
-            System.out.println("    -Constraints Left: "+groups[i].getLeft()[0]+groups[i].getLeft()[1]);
-            System.out.println("    -Constraints Right: "+groups[i].getRight()[0]+groups[i].getRight()[1]);
-            for (int j = 0; j < groups[i].getSpaces().length; j++){
-                Space qbert = groups[i].getSpaces()[j];
-                System.out.println("           - Space ("+qbert.getX()+", "+qbert.getY()+")");
-            }
-        }
-    }
-    
-    
     public void printBoardTerm(){
         System.out.println();
         
@@ -137,10 +83,7 @@ public class Page472 implements Game {
                 
                 int valer = grids[i][j].getValue();
                 
-                if (valer != 0)
-                    System.out.printf("%3d", grids[i][j].getValue());
-                else
-                    System.out.printf("%3s","-");
+                System.out.printf("%3s",keys[valer]);
             }
             System.out.println();
             

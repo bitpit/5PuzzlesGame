@@ -1,19 +1,13 @@
-import java.util.HashMap;
 public class Page472Rules implements Rule  {
     
     private Game game;
     private int dimensions;
     private String[] keys = {"-","0","A","B","C","D"};
-    private HashMap<String, Integer> doors;
-
+    
     
     public Page472Rules(Game g){
         game = g;
         dimensions = g.getDimensions()[0];
-        doors = new HashMap<String, Integer>();
-        for (int i = 2; i < keys.length; i++){
-            doors.put(keys[i],i);
-        }
     }
     
 
