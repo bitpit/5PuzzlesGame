@@ -37,10 +37,10 @@ public class Solver extends Thread {
         Group row = s.getRow();
         Group column = s.getColumn();
                 
-        game.printBoardTerm();
+        //game.printBoardTerm();
         
         while (s.morePossibilities()){
-            game.printBoardTerm();
+            //game.printBoardTerm();
             s.nextPossibility();
             if (rules.constraints(s) && label()){
             
