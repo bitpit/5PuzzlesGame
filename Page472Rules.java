@@ -54,7 +54,7 @@ public class Page472Rules implements Rule  {
     }
     
     
-    public boolean rowShape(Space s){
+    private boolean rowShape(Space s){
                 
         Group row = s.getRow();
         String[] right = row.getRight();
@@ -80,7 +80,7 @@ public class Page472Rules implements Rule  {
     }
     
     
-    public boolean columnShape(Space s){
+    private boolean columnShape(Space s){
        
         
         Group column = s.getColumn();

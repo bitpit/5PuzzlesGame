@@ -86,6 +86,10 @@ public class FileLoader {
             
         }
         
+        else if (g.getName().equals("SixPack")){
+            return loadSixPack(g);
+        }
+        
         return null;
         
     }//load dispatcher 
@@ -105,6 +109,32 @@ public class FileLoader {
         
         else return null;
     }//used by game to retrieve the dimensions of the board
+    
+    
+    private Group[] loadSixPack(Game g){
+        
+        s.useDelimiter(",");
+        int noOfGroups = s.nextInt();
+        Group[] groups = new Group[noOfGroups];
+        
+        s.nextLine();
+        
+        for (int j = 0; j < noOfGroups; j++){
+            groups[j] = new Group(25,6);
+            
+            s.nextLine();
+            
+            for (int i = 0; i < 6; i ++){
+                Space qb = g.getSpaceAt(s.nextInt(),s.nextInt());
+                if (s.hasNextInt())
+                    qb.setValue(s.nextInt());
+                groups[j].addSpace(qb);
+                qb.setGroup(groups[j]);
+                s.nextLine();
+            }
+        }
+        return groups;
+    }
     
     
     private Group[] loadKenKen(Game g){

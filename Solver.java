@@ -15,6 +15,7 @@ public class Solver extends Thread {
         if (type.equals("Soduku")) rules = new SodukuRules(g);  
         if (type.equals("KenKen")) rules = new KenKenRules(g);
         if (type.equals("Page472")) rules = new Page472Rules(g);
+        if (type.equals("SixPack")) rules = new SixPackRules(g);
         
         
     }
@@ -31,11 +32,10 @@ public class Solver extends Thread {
         }
         
         Space s = game.nextUnsolved();
+        game.printBoardTerm();
         
-        Group row = s.getRow();
-        Group column = s.getColumn();
-                    
         while (s.morePossibilities()){
+            //game.printBoardTerm();
             s.nextPossibility();
             if (rules.constraints(s) && label()){
                 return true;

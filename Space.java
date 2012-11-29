@@ -14,6 +14,7 @@ public interface Space {
     void setColumn(Group g);
     Group getRow();
     Group getColumn();
+    void setValue(int val);
     
     
 }

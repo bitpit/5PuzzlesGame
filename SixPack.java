@@ -35,7 +35,7 @@ public class SixPack implements Game {
                     increasing = false;
             }
         }
-                
+        groups = fl.load(this);
     }
 
 
@@ -53,13 +53,7 @@ public class SixPack implements Game {
         }
         return true;
     }
-    
-    
-    public void printBoardTerm(){
-        System.out.println("da board");
-    
-    }
-    
+        
     
     public Space nextUnsolved(){
         
@@ -83,6 +77,27 @@ public class SixPack implements Game {
         
     }
     
+    
+    public void printBoardTerm(){
+        
+        for (int i = 0; i < grids.length; i++){
+            StringBuffer s = new StringBuffer();
+            for (int j = 0; j < grids[i].length; j++){
+                s.append(""+grids[i][j].getValue()+" ");
+            }
+            s.append("\n");
+            String p = s.toString();
+            if (i%7==0 || i%4==0 || i%3 == 0)
+                System.out.printf("%14s",p);
+            else if (i == 1 || i == 6)
+                System.out.printf("%16s",p);
+            else if (i== 2 || i == 5)
+                System.out.printf("%18s",p);
+        }
+        System.out.println();
+    }
+    
+        
     
     public Group[] getGroups(){
         

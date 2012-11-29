@@ -4,7 +4,6 @@ public class SixPackSpace implements Space {
     private int x;
     private int y;
     private int[] possiblities;
-    private int resetVal;
     public Group group;
     public boolean labeled;
     
@@ -14,7 +13,6 @@ public class SixPackSpace implements Space {
         x = ecks;
         y = why;
         value = 0;
-        resetVal = value;
         possiblities = new int[15];
         for (int i = 0; i < possiblities.length; i++){
             possiblities[i] = i+1;
@@ -30,6 +28,12 @@ public class SixPackSpace implements Space {
     
     public Group getGroup(){
         return group;
+    }
+    
+    
+    public void setValue(int v){
+        labeled = true;
+        value = v;
     }
     
     
@@ -54,7 +58,6 @@ public class SixPackSpace implements Space {
     
     
     public void nextPossibility(){
-        labeled = true;
         if (morePossibilities()){
             value = possiblities[value];
         }
@@ -68,6 +71,8 @@ public class SixPackSpace implements Space {
     
     
     public boolean morePossibilities(){
+        if (labeled)
+            return false;
         if (value == possiblities.length)
             return false;
         return true;
@@ -75,7 +80,6 @@ public class SixPackSpace implements Space {
     
     
     public void reset(){
-        labeled = false;
         value = 0;
     }
     

@@ -90,6 +90,11 @@ public class Page472Space extends KenKenSpace implements Space {
     }
     
     
+    public void setValue(int v){
+        value = v;
+    }
+    
+    
     public void reset(){
         labeled = false;
         value = 0;

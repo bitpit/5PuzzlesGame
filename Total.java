@@ -19,6 +19,10 @@ public class Total {
             g = new Page472(args[0]);
             Solver s = new Solver(g);
         }
+        else if (str[1].substring(0,4).equals("sixp")){
+            g = new SixPack(args[0]);
+            Solver s = new Solver(g);
+        }
         else {
             g = new Soduku(args[0]);
             g.printBoardTerm();
@@ -28,7 +32,7 @@ public class Total {
         //if (!str[1].substring(0,4).equals("page")){
         
         Solver s = new Solver(g);
-        s.label();
+        System.out.println(s.label());
         System.out.println();
         g.printBoardTerm();
         System.out.println();

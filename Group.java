@@ -15,6 +15,12 @@ public class Group {
     }
     
     
+    public Group(int totes, int noOfSpaces){
+        total = totes;
+        spaces = new Space[noOfSpaces];
+    }
+    
+    
     public void addSpace(Space s){
         for (int i = 0; i<spaces.length; i++){
             if (spaces[i]==null){
