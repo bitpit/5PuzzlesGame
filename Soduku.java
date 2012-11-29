@@ -3,6 +3,7 @@ public class Soduku implements Game { //A sudoku game board
     private SodukuSpace[][] grids; //the spaces
     private String name; //the name of the game: soduku (because i only learned how to spell later)
     int[] dimensions;
+    Group[] groups;
   
     public Soduku (String fn){
         
@@ -60,7 +61,7 @@ public class Soduku implements Game { //A sudoku game board
     
    
     public Group[] getGroups(){
-        return null;
+        return groups;
     }
     
     
