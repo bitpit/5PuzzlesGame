@@ -17,7 +17,7 @@ public class Total {
             g = new KenKen(args[0]);
         else if (str[1].substring(0,4).equals("page")){
             g = new Page472(args[0]);
-            g.printBoardTerm();
+            Solver s = new Solver(g);
         }
         else {
             g = new Soduku(args[0]);
@@ -25,17 +25,12 @@ public class Total {
             System.out.println();
         }   
             
-        if (!str[1].substring(0,4).equals("page")){
-            Solver s = new Solver(g);
-            s.label();
+        //if (!str[1].substring(0,4).equals("page")){
+        
+        Solver s = new Solver(g);
+        System.out.println(s.label()+" label success");
+        System.out.println();
+        g.printBoardTerm();
             
-            System.out.println();
-            g.printBoardTerm();
-            System.out.println();
-        }
-        
-        
     }
-
-
 }

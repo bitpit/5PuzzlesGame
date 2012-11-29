@@ -1,16 +1,21 @@
-public class Solver {
+public class Solver extends Thread {
     
-    Rule rules;
+    public Rule rules;
     Game game;
     String type;
     
     public Solver(Game g){
         
-        game = g;
+        super("Solver");
         
-        if (game.getName().equals("Soduku")) rules = new SodukuRules(g);  
-        if (game.getName().equals("KenKen")) rules = new KenKenRules(g);
+        game = g;
+         
         type = game.getName();
+        
+        if (type.equals("Soduku")) rules = new SodukuRules(g);  
+        if (type.equals("KenKen")) rules = new KenKenRules(g);
+        if (type.equals("Page472")) rules = new Page472Rules(g);
+        
         
     }
  
@@ -19,14 +24,23 @@ public class Solver {
         
       
         if (game.finished()){
+            System.out.println("finished");
+            System.out.println("all constraints? "+rules.allConstraints());
             if (rules.allConstraints())
                 return true;
+            else
+                return false;
         }
         
         Space s = game.nextUnsolved();
-      //  System.out.println(s.getX()+" x, "+s.getY());
+        
+        Group row = s.getRow();
+        Group column = s.getColumn();
                 
+        game.printBoardTerm();
+        
         while (s.morePossibilities()){
+            game.printBoardTerm();
             s.nextPossibility();
             if (rules.constraints(s) && label()){
             
@@ -37,6 +51,12 @@ public class Solver {
         s.reset();
         
         return false;
+    }
+    
+    
+    public void run(){
+        label();
+        game.printBoardTerm();
     }
 
 }
