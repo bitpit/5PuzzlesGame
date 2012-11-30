@@ -1,14 +1,17 @@
+import java.util.ArrayList;
 public class Group {
 
     private Space[] spaces;
     int total;
     private String operator;
+    
 
     public Group(int t, String op, int s){
         total = t;
         spaces = new Space[s];
         operator = op;
     }
+    
     
     public Group(){
         total = 0;
@@ -85,4 +88,8 @@ public class Group {
         return null;
     }
     
+    
+    public ArrayList<Space> getSpacesList(){
+        return null;
+    }
 }

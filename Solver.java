@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 public class Solver extends Thread {
     
     public Rule rules;
@@ -32,10 +33,8 @@ public class Solver extends Thread {
         }
         
         Space s = game.nextUnsolved();
-        game.printBoardTerm();
-        
+                
         while (s.morePossibilities()){
-            //game.printBoardTerm();
             s.nextPossibility();
             if (rules.constraints(s) && label()){
                 return true;

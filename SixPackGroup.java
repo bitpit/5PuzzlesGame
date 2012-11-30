@@ -41,6 +41,11 @@ public class SixPackGroup extends Group {
     }
     
     
+    public ArrayList<Space> getSpacesList(){
+        return spaces;
+    }
+    
+    
     public String getOp(){
         return operator;
     }

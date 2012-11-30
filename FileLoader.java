@@ -115,12 +115,12 @@ public class FileLoader {
         
         s.useDelimiter(",");
         int noOfGroups = s.nextInt();
-        Group[] groups = new Group[noOfGroups];
+        SixPackGroup[] groups = new SixPackGroup[noOfGroups];
         
         s.nextLine();
         
         for (int j = 0; j < noOfGroups; j++){
-            groups[j] = new Group(25,6);
+            groups[j] = new SixPackGroup(25,6);
             
             s.nextLine();
             
