@@ -24,12 +24,13 @@ public class Total {
         }
         else {
             g = new Soduku(args[0]);
-            g.printBoardTerm();
             System.out.println();
         }   
             
         //if (!str[1].substring(0,4).equals("page")){
-        
+        System.out.println();
+        g.printBoardTerm();
+        System.out.println();
         Solver s = new Solver(g);
         Thread t = new Thread(s);
         System.out.println(s.label());

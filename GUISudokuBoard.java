@@ -20,8 +20,10 @@ public class GUISudokuBoard extends JPanel implements ActionListener {
                 
                 JPanel p = new JPanel(new GridLayout(dim/3,dim/3));
                 p.setBorder(BorderFactory.createLineBorder(Color.black));
-                for (int k = 0; k < dim; k++){
-                    p.add(new GUISquareSpace((k/3),(k%3),50));
+                for (int k = 0; k < dim/3; k++){
+                    for (int l = 0; l < dim/3; l++){
+                        p.add(new GUISquareSpace(((k+1)+(i*(dim/3)))-1,((l+1)+(j*(dim/3))-1),50));
+                    }
                 }
                 p.setPreferredSize(new Dimension(dim*3,dim*3));
                 spaces[i][j] = p;
