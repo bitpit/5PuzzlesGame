@@ -12,6 +12,6 @@ public class GUI extends JFrame {
 		
 		thisOne.pack();
 		thisOne.setVisible(true);
-		thisOne.setSize(new Dimension(500,800));
+		thisOne.setSize(new Dimension(300,300));
 	}
 }

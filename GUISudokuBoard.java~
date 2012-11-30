@@ -1,0 +1,19 @@
+public class GUISudokuBoard extends JFrame implements ActionEvent {
+
+
+    private Game g;
+    private GUISquareSpace[] spaces;
+    
+    
+    public void init(){
+        
+        Container content = this.getContentPane();
+        
+    }
+    
+    public void actionPerformed(ActionEvent e){
+        System.out.println("nothing");
+    }
+
+
+}
