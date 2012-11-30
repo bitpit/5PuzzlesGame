@@ -14,18 +14,14 @@ public class GUISudokuBoard extends JPanel implements ActionListener {
         
         setLayout(new GridLayout(dim/3,dim/3));
         spaces = new JPanel[dim/3][dim/3];
-        int x = 0;
-        int y = 0;
-        
+             
         for (int i = 0; i < spaces.length; i++){
             for (int j = 0; j < spaces[i].length; j++){
                 
                 JPanel p = new JPanel(new GridLayout(dim/3,dim/3));
                 p.setBorder(BorderFactory.createLineBorder(Color.black));
                 for (int k = 0; k < dim; k++){
-                    p.add(new GUISquareSpace(x%dim,y%dim,50));
-                    x+=1;
-                    y+=1;
+                    p.add(new GUISquareSpace((k/3),(k%3),50));
                 }
                 p.setPreferredSize(new Dimension(dim*3,dim*3));
                 spaces[i][j] = p;
@@ -34,6 +30,7 @@ public class GUISudokuBoard extends JPanel implements ActionListener {
         }
         setBorder(BorderFactory.createLineBorder(Color.black));
     }
+    
     
     public void actionPerformed(ActionEvent e){
         System.out.println("nothing");

@@ -38,6 +38,7 @@ public class FileLoader {
         catch (FileNotFoundException e){
             s = null;
         }
+        stringChecker();
         
     }//gets a file with the string name
     

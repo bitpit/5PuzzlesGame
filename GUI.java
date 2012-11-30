@@ -7,7 +7,7 @@ public class GUI extends JFrame {
 
 	public static void main(String[] args) {
 
-	    Puzzles thisOne = new Puzzles();
+	    GUIMain thisOne = new GUIMain();
 		thisOne.init();
 		
 		thisOne.pack();

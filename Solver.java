@@ -48,7 +48,9 @@ public class Solver extends Thread {
     
     
     public void run(){
-        label();
+        boolean labelled = label();
+	System.out.println("finished labeling");
+	System.out.println("labelling was a "+labelled);
     }
 
 }
