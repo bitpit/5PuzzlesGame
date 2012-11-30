@@ -49,7 +49,6 @@ public class Solver extends Thread {
     
     public void run(){
         label();
-        game.printBoardTerm();
     }
 
 }

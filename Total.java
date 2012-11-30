@@ -11,17 +11,16 @@ public class Total {
         
         Game g;
         
+        
         String[] str = args[0].split("/");
         
         if (str[1].substring(0,5).equals("kenke"))
             g = new KenKen(args[0]);
         else if (str[1].substring(0,4).equals("page")){
             g = new Page472(args[0]);
-            Solver s = new Solver(g);
         }
         else if (str[1].substring(0,4).equals("sixp")){
             g = new SixPack(args[0]);
-            Solver s = new Solver(g);
         }
         else {
             g = new Soduku(args[0]);
@@ -32,7 +31,9 @@ public class Total {
         //if (!str[1].substring(0,4).equals("page")){
         
         Solver s = new Solver(g);
+        Thread t = new Thread(s);
         System.out.println(s.label());
+        t.run();
         System.out.println();
         g.printBoardTerm();
         System.out.println();
