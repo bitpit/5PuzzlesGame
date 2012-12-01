@@ -39,7 +39,14 @@ public class GUISquareSpace extends JButton {
     
     public void paintComponent(Graphics g){
         digit = space.getValue();
+        
+        if (!canBeChanged){
+            g.setColor(new Color(222,222,222));
+            g.fillRect(0,0,50,50);
+        }
+        
         if (digit>0){
+            g.setColor(new Color(0,0,0));
             g.setFont(f);
             g.drawString(""+digit,15,30);
         }
