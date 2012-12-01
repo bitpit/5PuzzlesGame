@@ -10,10 +10,10 @@ public class GUINumbersMenu implements ActionListener {
     
 	private JButton myButton;
 	JPopupMenu  menu;
-    GUIMenuListener listen;
+    private GUIMenuListener listen;
+    
 	
-	
-    public GUINumbersMenu(JButton clicker, Space s, int noOfItems) {
+    public GUINumbersMenu(JButton clicker, Space s, int noOfItems, ActionListener listn) {
 		myButton = clicker;
 		
 		// create a popup menu
@@ -29,6 +29,7 @@ public class GUINumbersMenu implements ActionListener {
             JMenuItem item = new JMenuItem(""+(i+1));
             menu.add(item);
             item.addActionListener(listen);
+            item.addActionListener(listn);
         }
 
         clicker.addActionListener(this);

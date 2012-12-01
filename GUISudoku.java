@@ -8,7 +8,6 @@ public class GUISudoku extends JFrame implements ActionListener {
     private JFrame parent;
     private JPanel board;
     private Game game;
-    private Game solved;
     private Solver solver;
     private GUISquareSpace[][] spaces;
     
@@ -55,9 +54,7 @@ public class GUISudoku extends JFrame implements ActionListener {
     
     public void setGame(String fn){
         game = new Soduku(fn);
-        Game solved = new Soduku(fn);
-        solver = new Solver(solved);
-        solver.start();
+        solver = new Solver(game);
     }
     
     
@@ -65,8 +62,16 @@ public class GUISudoku extends JFrame implements ActionListener {
         if (e.getSource() == back){
             this.setVisible(false);
         }
-        else
-            System.out.println("check constraints");
+        else {
+            if (game.finished()){
+                if (solver.rules.allConstraints()){
+                    System.out.println("won the game!");
+                }
+                else
+                    System.out.println("lost the game");
+                
+            }
+        }
     }
 
 }
