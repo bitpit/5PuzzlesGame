@@ -10,10 +10,12 @@ public class GUISquareSpace extends JButton implements ActionListener {
     Space space;
     JLabel lab;
     Font f;
+    boolean canBeChanged;
     
     GUISquareSpace(int x, int y, int dims) {
         super();
         
+        canBeChanged = true;
         this.x = x;
         this.y = y;
         
@@ -53,6 +55,8 @@ public class GUISquareSpace extends JButton implements ActionListener {
     public void setSpace(Space s){
         space = s;
         digit = s.getValue();
+        if (digit>0)
+            canBeChanged = false;
     }
     
     
