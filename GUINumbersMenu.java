@@ -24,6 +24,7 @@ public class GUINumbersMenu implements ActionListener {
         JMenuItem blank = new JMenuItem("");
         menu.add(blank);
         blank.addActionListener(listen);
+        blank.addActionListener(listn);
         
         for (int i = 0; i < 9; i++){
             JMenuItem item = new JMenuItem(""+(i+1));

@@ -63,6 +63,7 @@ public class GUISudoku extends JFrame implements ActionListener {
             this.setVisible(false);
         }
         else {
+            //System.out.println(game.finished());
             if (game.finished()){
                 if (solver.rules.allConstraints()){
                     System.out.println("won the game!");
