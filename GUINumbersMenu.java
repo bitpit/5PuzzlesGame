@@ -13,7 +13,7 @@ public class GUINumbersMenu implements ActionListener {
     private GUIMenuListener listen;
     
 	
-    public GUINumbersMenu(JButton clicker, Space s, int noOfItems, ActionListener listn) {
+    public GUINumbersMenu(JButton clicker, Space s, int noOfItems) {
 		myButton = clicker;
 		
 		// create a popup menu
@@ -24,13 +24,12 @@ public class GUINumbersMenu implements ActionListener {
         JMenuItem blank = new JMenuItem("");
         menu.add(blank);
         blank.addActionListener(listen);
-        blank.addActionListener(listn);
+        
         
         for (int i = 0; i < 9; i++){
             JMenuItem item = new JMenuItem(""+(i+1));
             menu.add(item);
             item.addActionListener(listen);
-            item.addActionListener(listn);
         }
 
         clicker.addActionListener(this);

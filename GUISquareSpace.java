@@ -12,13 +12,11 @@ public class GUISquareSpace extends JButton {
     private Font f = new Font("Verdana",Font.PLAIN, 25);;
     boolean canBeChanged = true;
     private int dimensions;
-    private ActionListener menu;
-        
+            
     
-    public GUISquareSpace(int x, int y, int dims, ActionListener m) {
+    public GUISquareSpace(int x, int y, int dims) {
         super();
         
-        menu = m;
         this.x = x;
         this.y = y;
         
@@ -60,7 +58,7 @@ public class GUISquareSpace extends JButton {
             canBeChanged = false;
         else {
             GUINumbersMenu listen;
-            listen = new GUINumbersMenu(this,space,dimensions,menu);
+            listen = new GUINumbersMenu(this,space,dimensions);
         }
     }
     
