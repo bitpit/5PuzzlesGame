@@ -49,13 +49,13 @@ public class GUIMain extends JFrame implements ActionListener {
         if (source == soduku1 || source == soduku2){
             sod = new GUISudoku();
             sod.parentHandoff(this);
-            sod.init();
-            sod.pack();
-            sod.setSize(new Dimension(600,600));
             if (source == soduku1)
                 sod.setGame("boards/Soduku1");
             else if (source == soduku2)
                 sod.setGame("boards/Soduku2");
+            sod.init();
+            sod.pack();
+            sod.setSize(new Dimension(600,600));
             sod.setVisible(true);
         }
     }

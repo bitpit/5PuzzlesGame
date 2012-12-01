@@ -7,6 +7,7 @@ public class GUISquareSpace extends JButton implements ActionListener {
     
     int digit; //the number it would display
     int x, y; //the x,y position on the grid
+    Space space;
     JLabel lab;
     Font f;
     
@@ -46,5 +47,24 @@ public class GUISquareSpace extends JButton implements ActionListener {
     
     public void actionPerformed(ActionEvent e){
         System.out.println(x+", "+y);
+    }
+    
+    
+    public void setSpace(Space s){
+        space = s;
+        digit = s.getValue();
+    }
+    
+    
+    public Space getSpace(){
+        return space;
+    }
+    
+    
+    public int[] getDims(){
+        int[] ret = new int[2];
+        ret[0] = this.x;
+        ret[1] = this.y;
+        return ret;
     }
 }
