@@ -7,7 +7,7 @@ public class GUISudoku extends JFrame implements ActionListener {
     private JButton back;
     private JButton solve;
     private JFrame parent;
-    private JPanel board;
+    private GUISudokuBoard board;
     private Game game;
     private Solver solver;
     private GUISquareSpace[][] spaces;
@@ -69,6 +69,7 @@ public class GUISudoku extends JFrame implements ActionListener {
         }
         else if (e.getSource() == solve){
             solver.label();
+            board.removeListeners();
             repaint();
         }
 

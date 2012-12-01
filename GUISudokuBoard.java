@@ -44,4 +44,26 @@ public class GUISudokuBoard extends JPanel implements ActionListener {
     }
     
     
+    public void removeListeners(){
+        
+        for (JPanel[] panel : spaces){
+            for (int i = 0; i < panel.length; i++){
+                Component[] camps = panel[i].getComponents();
+                Component comp = null;
+                for (int j = 0; j < camps.length; j++){
+                    comp = camps[j];
+                    if (comp instanceof JButton){
+                        JButton jb = (JButton)(camps[j]);
+                        ActionListener[] lastnrs = jb.getActionListeners();
+                        for (int k = 0; k < lastnrs.length; k++){
+                            jb.removeActionListener(lastnrs[k]);
+                        }
+                    }
+                }
+            }
+        }
+        //ActionListener[] listeners = 
+        
+    }
+    
 }
