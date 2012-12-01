@@ -4,7 +4,8 @@ public class Soduku implements Game { //A sudoku game board
     private String name; //the name of the game: soduku (because i only learned how to spell later)
     int[] dimensions;
     Group[] groups;
-  
+        
+    
     public Soduku (String fn){
         
         FileLoader fl = new FileLoader(fn);
@@ -97,5 +98,6 @@ public class Soduku implements Game { //A sudoku game board
     public int[] getDimensions(){
         return dimensions;
     }
+    
     
 }

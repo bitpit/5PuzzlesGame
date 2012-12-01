@@ -24,7 +24,7 @@ public class GUISudoku extends JFrame implements ActionListener {
         JLabel title = new JLabel("Sudoku");
         title.setFont(new Font("Verdana",Font.PLAIN,18));
         
-        board = new GUISudokuBoard(9,game);
+        board = new GUISudokuBoard(9,game,this);
         board.setPreferredSize(new Dimension(450,450));
         board.setMaximumSize(new Dimension(450,450));
 		        
@@ -39,8 +39,13 @@ public class GUISudoku extends JFrame implements ActionListener {
         contentPane.add(Box.createVerticalGlue());
         contentPane.add(buttons);
         
-		
+        		
 	}
+    
+    
+    public void checkConstraints(){
+        System.out.println("check constraints");
+    }
     
     
     public void parentHandoff(JFrame j){
@@ -61,7 +66,7 @@ public class GUISudoku extends JFrame implements ActionListener {
             this.setVisible(false);
         }
         else
-            System.out.println("something happaned");
+            System.out.println("check constraints");
     }
 
 }

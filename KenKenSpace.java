@@ -7,6 +7,7 @@ public class KenKenSpace implements Space {
     private int resetVal;
     public Group group;
     public boolean labeled;
+        
     
     public KenKenSpace (int dimensions, int ecks, int why) {
                
@@ -119,5 +120,6 @@ public class KenKenSpace implements Space {
     public Group getColumn(){
         return null;
     }
-
+    
+    
 }

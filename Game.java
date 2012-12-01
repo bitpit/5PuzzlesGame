@@ -15,6 +15,5 @@ public interface Game {
     void setSpaceAt(int x, int y, int val);
     Group[] getGroups();
     int[] getDimensions();//of the board
-    
-       
+               
 }

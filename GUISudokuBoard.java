@@ -4,16 +4,17 @@ import java.awt.event.* ;
 
 public class GUISudokuBoard extends JPanel implements ActionListener {
 
-//150 size for individual squares
+
     private Game g;
     private JPanel[][] spaces;
     private GUISquareSpace space;
     private int dim;
     private Game game;
     
-    public GUISudokuBoard(int dim, Game g){
+    
+    public GUISudokuBoard(int dim, Game g, ActionListener listn){
         game = g;
-        
+                
         setLayout(new GridLayout(dim/3,dim/3));
         spaces = new JPanel[dim/3][dim/3];
              
@@ -27,6 +28,7 @@ public class GUISudokuBoard extends JPanel implements ActionListener {
                         GUISquareSpace spacey = new GUISquareSpace(((k+1)+(i*(dim/3)))-1,((l+1)+(j*(dim/3))-1),50);
                         int[] loc = spacey.getDims();
                         spacey.setSpace(game.getSpaceAt(loc[0],loc[1]));
+                        spacey.addActionListener(listn);
                         p.add(spacey);
                     }
                 }

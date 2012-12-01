@@ -4,6 +4,8 @@ public class KenKen implements Game { //A sudoku game board
     private String name; //the name of the game: soduku (because i only learned how to spell later)
     int[] dimensions;
     public Group[] groups;
+    boolean changed = false;
+    
     
     public KenKen (String fn){
         
@@ -117,5 +119,6 @@ public class KenKen implements Game { //A sudoku game board
         }
         
     }//printBoardReal*/
+    
     
 }

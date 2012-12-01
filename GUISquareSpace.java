@@ -3,26 +3,22 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class GUISquareSpace extends JButton implements ActionListener {
+public class GUISquareSpace extends JButton {
     
-    int digit; //the number it would display
-    int x, y; //the x,y position on the grid
-    Space space;
-    JLabel lab;
-    Font f;
-    boolean canBeChanged;
+    private int x, y;
+    private int digit = 0;
+    private Space space;
+    private JLabel lab;
+    private Font f = new Font("Verdana",Font.PLAIN, 25);;
+    boolean canBeChanged = true;
+    private int dimensions;
+        
     
-    GUISquareSpace(int x, int y, int dims) {
+    public GUISquareSpace(int x, int y, int dims) {
         super();
         
-        canBeChanged = true;
         this.x = x;
         this.y = y;
-        
-        f = new Font("Verdana",Font.PLAIN, 25);
-        digit = 0;
-        
-        this.addActionListener(this);
         
         setBorder(BorderFactory.createLineBorder(Color.black));
         setPreferredSize(new Dimension(dims,dims));
@@ -40,15 +36,11 @@ public class GUISquareSpace extends JButton implements ActionListener {
     
     
     public void paintComponent(Graphics g){
+        digit = space.getValue();
         if (digit>0){
             g.setFont(f);
             g.drawString(""+digit,15,30);
         }
-    }
-    
-    
-    public void actionPerformed(ActionEvent e){
-        System.out.println(x+", "+y);
     }
     
     
@@ -57,6 +49,10 @@ public class GUISquareSpace extends JButton implements ActionListener {
         digit = s.getValue();
         if (digit>0)
             canBeChanged = false;
+        else {
+            GUINumbersMenu listen;
+            listen = new GUINumbersMenu(this,space,dimensions);
+        }
     }
     
     
@@ -71,4 +67,6 @@ public class GUISquareSpace extends JButton implements ActionListener {
         ret[1] = this.y;
         return ret;
     }
+    
+    
 }

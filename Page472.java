@@ -6,6 +6,7 @@ public class Page472 implements Game {
     int[] dimensions;
     public Group[] groups;
     private String[] keys = {"0","-","A","B","C","D"};
+        
     
     public Page472 (String fn){
         
@@ -90,5 +91,7 @@ public class Page472 implements Game {
         }
 
     }
+    
+    
     
 }

@@ -6,7 +6,7 @@ public class SixPackSpace implements Space {
     private int[] possiblities;
     public Group group;
     public boolean labeled;
-    
+        
     
     public SixPackSpace(int ecks, int why){
         labeled = false;
@@ -102,6 +102,6 @@ public class SixPackSpace implements Space {
     public void setColumn(Group g){
         group = g;
     }
-
+    
     
 }

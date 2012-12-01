@@ -5,7 +5,7 @@ public class SixPack implements Game {
     private String name; //the name of the game: soduku (because i only learned how to spell later)
     int[] dimensions;
     public Group[] groups;
-    
+        
     
     public SixPack(String fn){
 
@@ -98,7 +98,6 @@ public class SixPack implements Game {
     }
     
         
-    
     public Group[] getGroups(){
         
         return groups;
@@ -111,6 +110,7 @@ public class SixPack implements Game {
         return dimensions;
         
     }
-        
+    
+    
     
 }

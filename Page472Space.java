@@ -8,7 +8,7 @@ public class Page472Space extends KenKenSpace implements Space {
     public Group row;
     public Group column;
     public boolean labeled;
-    
+        
     
     public Page472Space (int dimensions, int ecks, int why) {
         
