@@ -5,6 +5,7 @@ import java.awt.event.* ;
 public class GUISudoku extends JFrame implements ActionListener {
     
     private JButton back;
+    private JButton solve;
     private JFrame parent;
     private JPanel board;
     private Game game;
@@ -23,7 +24,7 @@ public class GUISudoku extends JFrame implements ActionListener {
         JLabel title = new JLabel("Sudoku");
         title.setFont(new Font("Verdana",Font.PLAIN,18));
         
-        board = new GUISudokuBoard(9,game);
+        board = new GUISudokuBoard(9,solver,game,this);
         board.setPreferredSize(new Dimension(450,450));
         board.setMaximumSize(new Dimension(450,450));
 		        
@@ -31,7 +32,11 @@ public class GUISudoku extends JFrame implements ActionListener {
         back = new JButton("Exit Game");
         back.setMinimumSize(new Dimension(45,30));
         back.addActionListener(this);
+        solve = new JButton("Solve Game");
+        solve.setMinimumSize(new Dimension(45,30));
+        solve.addActionListener(this);
         buttons.add(back);
+        buttons.add(solve);
 
         contentPane.add(Box.createHorizontalStrut(10));
         contentPane.add(board);
@@ -62,19 +67,12 @@ public class GUISudoku extends JFrame implements ActionListener {
         if (e.getSource() == back){
             this.setVisible(false);
         }
-        else {
-            //System.out.println(game.finished());
-            if (game.finished()){
-                if (solver.rules.allConstraints()){
-                    System.out.println("won the game!");
-                }
-                else
-                    System.out.println("lost the game");
-                
-            }
+        else if (e.getSource() == solve){
+            solver.label();
+            repaint();
         }
-    }
 
+    }
 }
 
 

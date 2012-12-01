@@ -1,6 +1,7 @@
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.* ;
+import javax.swing.JFrame;
 
 public class GUISudokuBoard extends JPanel implements ActionListener {
 
@@ -9,12 +10,10 @@ public class GUISudokuBoard extends JPanel implements ActionListener {
     private JPanel[][] spaces;
     private GUISquareSpace space;
     private int dim;
-    private Game game;
+       
     
-    
-    public GUISudokuBoard(int dim, Game g){
-        game = g;
-                
+    public GUISudokuBoard(int dim, Solver saul, Game game, JFrame frame){
+                       
         setLayout(new GridLayout(dim/3,dim/3));
         spaces = new JPanel[dim/3][dim/3];
              
@@ -25,7 +24,7 @@ public class GUISudokuBoard extends JPanel implements ActionListener {
                 p.setBorder(BorderFactory.createLineBorder(Color.black));
                 for (int k = 0; k < dim/3; k++){
                     for (int l = 0; l < dim/3; l++){
-                        GUISquareSpace spacey = new GUISquareSpace(((k+1)+(i*(dim/3)))-1,((l+1)+(j*(dim/3))-1),50);
+                        GUISquareSpace spacey = new GUISquareSpace(((k+1)+(i*(dim/3)))-1,((l+1)+(j*(dim/3))-1),50,saul,frame);
                         int[] loc = spacey.getDims();
                         spacey.setSpace(game.getSpaceAt(loc[0],loc[1]));
                         p.add(spacey);
@@ -43,5 +42,6 @@ public class GUISudokuBoard extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e){
         System.out.println("nothing");
     }
-
+    
+    
 }

@@ -1,10 +1,11 @@
 public class Soduku implements Game { //A sudoku game board
-
+    
     private SodukuSpace[][] grids; //the spaces
     private String name; //the name of the game: soduku (because i only learned how to spell later)
     int[] dimensions;
     Group[] groups;
-        
+    private boolean fin = false;
+    
     
     public Soduku (String fn){
         
@@ -41,12 +42,19 @@ public class Soduku implements Game { //A sudoku game board
     
     
     public boolean finished(){
-        for (int i = 0; i < dimensions[0];i++){
-            for (int j = 0; j<dimensions[1];j++){
-                if (grids[i][j].getValue()==0)
-                    return false;
+        if (!fin){
+            for (int i = 0; i < dimensions[0];i++){
+                for (int j = 0; j<dimensions[1];j++){
+                    if (grids[i][j].getValue()==0){
+                        return false;
+                    }
+                }
             }
         }
+        else if (fin)
+            return false;
+        else
+            fin = true;
         return true;
     }//sees if its finished yet
     
@@ -55,12 +63,12 @@ public class Soduku implements Game { //A sudoku game board
         return grids[x][y];
     }//gets the space at a particular place
     
-   
+    
     public void setSpaceAt(int x, int y, int val){
         grids[x][y].setValue(val);
     }
     
-   
+    
     public Group[] getGroups(){
         return groups;
     }

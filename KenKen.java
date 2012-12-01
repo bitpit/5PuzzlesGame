@@ -5,6 +5,7 @@ public class KenKen implements Game { //A sudoku game board
     int[] dimensions;
     public Group[] groups;
     boolean changed = false;
+    private boolean fin = false;
     
     
     public KenKen (String fn){
@@ -43,15 +44,20 @@ public class KenKen implements Game { //A sudoku game board
     
     
     public boolean finished(){
-        for (int i = 0; i < dimensions[0]; i++){
-            for (int j = 0; j<dimensions[0]; j++){
-                if (grids[i][j].getValue() == 0)
-                    return false;
+        if (!fin){
+            for (int i = 0; i < dimensions[0]; i++){
+                for (int j = 0; j<dimensions[0]; j++){
+                    if (grids[i][j].getValue() == 0)
+                        return false;
+                }
+                
             }
-            
         }
+        else if (fin)
+            return false;
+        else
+            fin = true;
         return true;
-        
     }
     
     

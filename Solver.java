@@ -2,8 +2,8 @@ import java.util.ArrayList;
 public class Solver extends Thread {
     
     public Rule rules;
-    Game game;
-    String type;
+    public Game game;
+    public String type;
     
     public Solver(Game g){
         

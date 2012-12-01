@@ -15,5 +15,5 @@ public interface Space {
     Group getRow();
     Group getColumn();
     void setValue(int val);
-        
+    int getPossibilities();
 }

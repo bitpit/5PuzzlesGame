@@ -5,6 +5,7 @@ public class SixPack implements Game {
     private String name; //the name of the game: soduku (because i only learned how to spell later)
     int[] dimensions;
     public Group[] groups;
+    private boolean fin = false;
         
     
     public SixPack(String fn){
@@ -45,15 +46,21 @@ public class SixPack implements Game {
     
     
     public boolean finished(){
-        for (int i = 0; i < grids.length; i++){
-            for (int j = 0; j < grids[i].length; j++){
-                if (grids[i][j].getValue() == 0)
-                    return false;
+        if (!fin){
+            for (int i = 0; i < grids.length; i++){
+                for (int j = 0; j < grids[i].length; j++){
+                    if (grids[i][j].getValue() == 0)
+                        return false;
+                }
             }
         }
+        else if (fin)
+            return false;
+        else
+            fin = true;
         return true;
     }
-        
+    
     
     public Space nextUnsolved(){
         
