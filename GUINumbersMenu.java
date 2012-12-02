@@ -13,13 +13,13 @@ public class GUINumbersMenu implements ActionListener {
     private GUIMenuListener listen;
         
 	
-    public GUINumbersMenu(JButton clicker, Space s, Solver sol, JFrame frame) {
+    public GUINumbersMenu(JButton clicker, Space s, JFrame frame) {
 		myButton = clicker;
 		
 		// create a popup menu
 		menu = new JPopupMenu("");
         
-        listen = new GUIMenuListener(s,sol,frame);
+        listen = new GUIMenuListener(s,frame);
         
         JMenuItem blank = new JMenuItem("");
         menu.add(blank);

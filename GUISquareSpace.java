@@ -13,16 +13,14 @@ public class GUISquareSpace extends JButton {
     private Font f = new Font("Verdana",Font.PLAIN, 25);;
     boolean canBeChanged = true;
     private int dimensions;
-    public Solver saul;
     private JFrame top;
     private GUINumbersMenu listen;
                 
     
-    public GUISquareSpace(int x, int y, int dims, Solver solv, JFrame frame) {
+    public GUISquareSpace(int x, int y, int dims, JFrame frame) {
         super();
         
         top = frame;
-        saul = solv;
         dimensions = dims;
         this.x = x;
         this.y = y;
@@ -46,7 +44,7 @@ public class GUISquareSpace extends JButton {
         digit = space.getValue();
         
         if (!canBeChanged){
-            g.setColor(new Color(222,222,222));
+            g.setColor(new Color(218,218,218));
             g.fillRect(0,0,50,50);
         }
         
@@ -64,7 +62,7 @@ public class GUISquareSpace extends JButton {
         if (digit>0)
             canBeChanged = false;
         else {
-            listen = new GUINumbersMenu(this,space,saul,top);
+            listen = new GUINumbersMenu(this,space,top);
         }
     }
     

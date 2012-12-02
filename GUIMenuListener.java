@@ -8,12 +8,10 @@ import javax.swing.JOptionPane;
 public class GUIMenuListener implements ActionListener {
     
     private Space space;
-    private Solver saul;
     private JFrame top;
     
-    public GUIMenuListener(Space s, Solver sol, JFrame frame){
+    public GUIMenuListener(Space s, JFrame frame){
         space = s;
-        saul = sol;
         top = frame;
     }
     
@@ -30,18 +28,5 @@ public class GUIMenuListener implements ActionListener {
             i = 0;
         }
         space.setValue(i);
-        if (saul.game.finished()){
-            if (saul.rules.allConstraints())
-                JOptionPane.showMessageDialog(top,
-                                              "You Won!",
-                                              "Congratulations!",
-                                              JOptionPane.INFORMATION_MESSAGE);
-            else
-                JOptionPane.showMessageDialog(top,
-                                              "You Lost. Try again!",
-                                              "Sorry...",
-                                              JOptionPane.ERROR_MESSAGE);
-            top.setVisible(false);
-        }
     }
 }
