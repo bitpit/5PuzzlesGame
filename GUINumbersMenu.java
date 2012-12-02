@@ -1,6 +1,5 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
@@ -13,13 +12,13 @@ public class GUINumbersMenu implements ActionListener {
     private GUIMenuListener listen;
         
 	
-    public GUINumbersMenu(JButton clicker, Space s, JFrame frame) {
+    public GUINumbersMenu(JButton clicker, Space s) {
 		myButton = clicker;
 		
 		// create a popup menu
 		menu = new JPopupMenu("");
         
-        listen = new GUIMenuListener(s,frame);
+        listen = new GUIMenuListener(s);
         
         JMenuItem blank = new JMenuItem("");
         menu.add(blank);

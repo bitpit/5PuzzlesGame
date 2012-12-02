@@ -6,7 +6,7 @@ public class GUIMain extends JFrame implements ActionListener {
     
     private JButton soduku2;
     private JButton soduku1;
-    private GUISudoku sod;
+    private GUIGame sod;
 
 	
     public void init() {
@@ -47,13 +47,11 @@ public class GUIMain extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e){
         Object source = e.getSource();
         if (source == soduku1 || source == soduku2){
-            sod = new GUISudoku();
-            sod.parentHandoff(this);
+            sod = new GUIGame();
             if (source == soduku1)
-                sod.setGame("boards/Soduku1");
+                sod.init(new Soduku("boards/Soduku1"));
             else if (source == soduku2)
-                sod.setGame("boards/Soduku2");
-            sod.init();
+                sod.init(new Soduku("boards/Soduku2"));
             sod.pack();
             sod.setSize(new Dimension(600,600));
             sod.setVisible(true);

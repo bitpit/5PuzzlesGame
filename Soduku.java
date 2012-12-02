@@ -5,10 +5,9 @@ public class Soduku implements Game { //A sudoku game board
     int[] dimensions;
     Group[] groups;
     private boolean fin = false;
-    
+        
     
     public Soduku (String fn){
-        
         FileLoader fl = new FileLoader(fn);
         fl.stringChecker();
         
@@ -105,6 +104,17 @@ public class Soduku implements Game { //A sudoku game board
     
     public int[] getDimensions(){
         return dimensions;
+    }
+    
+    
+    public void reset(){
+        for (int i = 0; i < grids.length; i ++){
+            for (int j = 0; j < grids[i].length; j++){
+                if (!grids[i][j].labeled)
+                    grids[i][j].setValue(0);
+            }
+        }
+        
     }
     
     

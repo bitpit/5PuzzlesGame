@@ -32,7 +32,6 @@ public class SixPackSpace implements Space {
     
     
     public void setValue(int v){
-        labeled = true;
         value = v;
     }
     
@@ -71,8 +70,6 @@ public class SixPackSpace implements Space {
     
     
     public boolean morePossibilities(){
-        if (labeled)
-            return false;
         if (value == possiblities.length)
             return false;
         return true;
@@ -101,6 +98,10 @@ public class SixPackSpace implements Space {
     
     public void setColumn(Group g){
         group = g;
+    }
+    
+    public void setLabeled(){
+        labeled = true;
     }
     
     

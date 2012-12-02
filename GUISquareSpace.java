@@ -2,7 +2,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JFrame;
 
 public class GUISquareSpace extends JButton {
     
@@ -13,14 +12,12 @@ public class GUISquareSpace extends JButton {
     private Font f = new Font("Verdana",Font.PLAIN, 25);;
     boolean canBeChanged = true;
     private int dimensions;
-    private JFrame top;
     private GUINumbersMenu listen;
                 
     
-    public GUISquareSpace(int x, int y, int dims, JFrame frame) {
+    public GUISquareSpace(int x, int y, int dims){
         super();
         
-        top = frame;
         dimensions = dims;
         this.x = x;
         this.y = y;
@@ -62,7 +59,7 @@ public class GUISquareSpace extends JButton {
         if (digit>0)
             canBeChanged = false;
         else {
-            listen = new GUINumbersMenu(this,space,top);
+            listen = new GUINumbersMenu(this,space);
         }
     }
     

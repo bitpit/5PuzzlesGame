@@ -50,7 +50,6 @@ public class Page472Space extends KenKenSpace implements Space {
     
     
     public void nextPossibility(){
-        labeled = true;
         if (morePossibilities()){
             value = possiblities[value];
         }
@@ -96,8 +95,11 @@ public class Page472Space extends KenKenSpace implements Space {
     
     
     public void reset(){
-        labeled = false;
         value = 0;
+    }
+    
+    public void setLabeled(){
+        labeled = true;
     }
     
 }

@@ -61,7 +61,6 @@ public class KenKenSpace implements Space {
     
     
     public void nextPossibility(){
-        labeled = true;
         if (morePossibilities()){
             value = possiblities[value];
         }
@@ -92,7 +91,6 @@ public class KenKenSpace implements Space {
     
     
     public void reset(){
-        labeled = false;
         value = 0;
     }
     
@@ -119,6 +117,11 @@ public class KenKenSpace implements Space {
     
     public Group getColumn(){
         return null;
+    }
+    
+    
+    public void setLabeled(){
+        labeled = true;
     }
     
     

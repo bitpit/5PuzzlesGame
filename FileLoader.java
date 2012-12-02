@@ -68,6 +68,7 @@ public class FileLoader {
             r = s.nextInt();
             c = s.nextInt();
             g.setSpaceAt(r,c,s.nextInt());
+            g.getSpaceAt(r,c).setLabeled();
             s.nextLine();
             
         }

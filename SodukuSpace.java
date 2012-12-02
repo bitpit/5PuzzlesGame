@@ -4,10 +4,11 @@ public class SodukuSpace implements Space {
     private int x;
     private int y;
     private int[] possiblities;
-    boolean labeled;
+    public boolean labeled;
         
     
     public SodukuSpace (int dimensions, int ecks, int why) {
+        labeled = false;
         value = 0;
         x = ecks;
         y = why;
@@ -86,6 +87,11 @@ public class SodukuSpace implements Space {
     
     public Group getColumn(){
         return null;
+    }
+    
+    
+    public void setLabeled(){
+        labeled = true;
     }
     
     

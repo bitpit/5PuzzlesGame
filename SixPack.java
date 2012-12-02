@@ -6,10 +6,9 @@ public class SixPack implements Game {
     int[] dimensions;
     public Group[] groups;
     private boolean fin = false;
-        
+            
     
     public SixPack(String fn){
-
         FileLoader fl = new FileLoader(fn);
         fl.stringChecker();
         
@@ -37,6 +36,11 @@ public class SixPack implements Game {
             }
         }
         groups = fl.load(this);
+    }
+    
+    
+    public void reset(){
+        
     }
 
 

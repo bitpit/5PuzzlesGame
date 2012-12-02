@@ -7,10 +7,9 @@ public class Page472 implements Game {
     public Group[] groups;
     private String[] keys = {"0","-","A","B","C","D"};
     private boolean fin = false;
-        
+            
     
     public Page472 (String fn){
-        
         FileLoader fl = new FileLoader(fn);
         fl.stringChecker();
         
@@ -27,6 +26,11 @@ public class Page472 implements Game {
         groups = fl.loadPage472(this);
         
     }//loads the file fn onto a d by d board
+    
+    
+    public void reset(){
+    
+    }
     
     
     public String getName(){

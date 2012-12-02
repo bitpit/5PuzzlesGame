@@ -3,7 +3,7 @@ import javax.swing.*;
 import java.awt.event.* ;
 import javax.swing.JFrame;
 
-public class GUISudokuBoard extends JPanel implements ActionListener {
+public class GUIKenKenBoard extends JPanel implements ActionListener {
 
 
     private Game g;
@@ -12,10 +12,10 @@ public class GUISudokuBoard extends JPanel implements ActionListener {
     private int dim;
        
     
-    public GUISudokuBoard(int dim, Game game){
+    public GUIKenKenBoard(int dim, Game game, JFrame frame){
                        
-        setLayout(new GridLayout(dim/3,dim/3));
-        spaces = new JPanel[dim/3][dim/3];
+        setLayout(null);
+        spaces = new JPanel[dim][dim];
              
         for (int i = 0; i < spaces.length; i++){
             for (int j = 0; j < spaces[i].length; j++){

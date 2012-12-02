@@ -6,10 +6,9 @@ public class KenKen implements Game { //A sudoku game board
     public Group[] groups;
     boolean changed = false;
     private boolean fin = false;
-    
+        
     
     public KenKen (String fn){
-        
         FileLoader fl = new FileLoader(fn);
         fl.stringChecker();
         
@@ -26,6 +25,11 @@ public class KenKen implements Game { //A sudoku game board
         groups = fl.load(this);
         
     }//loads the file fn onto a d by d board
+    
+    
+    public void reset(){
+    
+    }
     
     
     public String getName(){
@@ -81,7 +85,7 @@ public class KenKen implements Game { //A sudoku game board
     }
     
     
-    private void boardFileDebugger(){
+    public void printBoardTerm(){
         
         System.out.println();
         
@@ -102,7 +106,7 @@ public class KenKen implements Game { //A sudoku game board
     }//boardDebugger*/
     
     
-    public void printBoardTerm(){
+    public void printBosardTerm(){
         
         System.out.println();
         
