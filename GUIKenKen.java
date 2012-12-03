@@ -1,6 +1,7 @@
 import java.awt.*;
 import javax.swing.*;
-import java.awt.event.* ;
+import java.awt.event.*;
+
 
 public class GUIKenKen extends GUIGame implements ActionListener {
 
@@ -11,7 +12,8 @@ public class GUIKenKen extends GUIGame implements ActionListener {
     private GUIKenKenBoard board;
     private Game game;
     private Solver solver;
-    
+    private GUITimerDialog timer;
+        
     
     public void init(Game game) {
         
@@ -62,15 +64,15 @@ public class GUIKenKen extends GUIGame implements ActionListener {
         }
         else if (sorce == solve){
             game.reset();
-            /*
-            if (game.getDimensions()[0]>8)
-                JOptionPane.showOptionDialog(null, "Please wait..", "", 
-                                             JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, 
-                                             null, new Object[0], "");
-            solver.label();
-            if (game.getDimensions()[0]>8)
-                JOptionPane.getRootFrame().dispose();*/
-            solver.label();
+            if (game.getDimensions()[0]>8){
+                timer = new GUITimerDialog();
+                timer.init(solver);
+                timer.pack();
+                //timer.setSize(new Dimension(350,100));
+                timer.setVisible(true);
+                
+            }
+            solver.start();
             board.removeListeners();
             repaint();
         }

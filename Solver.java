@@ -4,6 +4,7 @@ public class Solver extends Thread {
     public Rule rules;
     public Game game;
     public String type;
+    private boolean labelled = false;
     
     public Solver(Game g){
         
@@ -46,11 +47,14 @@ public class Solver extends Thread {
         return false;
     }
     
+    public boolean getLabelled(){
+        return labelled;
+    }
+    
     
     public void run(){
-        boolean labelled = label();
-	System.out.println("finished labeling");
-	System.out.println("labelling was a "+labelled);
+        labelled = label();
+        
     }
 
 }

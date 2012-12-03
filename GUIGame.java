@@ -11,7 +11,7 @@ public class GUIGame extends JFrame implements ActionListener {
     private GUISudokuBoard board;
     private Game game;
     private Solver solver;
-    private boolean autoSolved = false;
+    public boolean autoSolved = false;
         
     
     public void init(Game game) {
