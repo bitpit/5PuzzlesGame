@@ -50,6 +50,23 @@ public class GUIKenKenBoard extends JPanel implements ActionListener {
     }
     
     
+    public void paintComponent(Graphics g){
+        //g.drawLine(1,2,22,2);
+    }
+    
+    
+    private int xDirection(){
+        //will return a -1 if the next space's x is decreasing, 0 if staying, 1 if increasing
+        return 0;
+    }
+    
+    
+    private int yDirection(){
+        //will return a -1 if the next space's y is decreasing, 0 if staying, 1 if increasing
+        return 0;
+    }
+
+    
     public void removeListeners(){
         
         for (JButton[] panel : spaces){

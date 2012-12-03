@@ -61,8 +61,16 @@ public class GUIKenKen extends GUIGame implements ActionListener {
         }
         else if (sorce == solve){
             game.reset();
+            /*
+            if (game.getDimensions()[0]>8)
+                JOptionPane.showOptionDialog(null, "Please wait..", "", 
+                                             JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, 
+                                             null, new Object[0], "");
             solver.label();
-            //board.removeListeners();
+            if (game.getDimensions()[0]>8)
+                JOptionPane.getRootFrame().dispose();*/
+            solver.label();
+            board.removeListeners();
             repaint();
         }
         else if (sorce == check){

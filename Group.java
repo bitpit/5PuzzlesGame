@@ -4,12 +4,14 @@ public class Group {
     private Space[] spaces;
     int total;
     private String operator;
+    public int groupIDX;
     
 
-    public Group(int t, String op, int s){
+    public Group(int t, String op, int s, int idx){
         total = t;
         spaces = new Space[s];
         operator = op;
+        groupIDX = idx;
     }
     
     

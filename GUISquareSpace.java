@@ -16,6 +16,8 @@ public class GUISquareSpace extends JButton {
     private boolean special;
     private Color black = new Color(0,0,0);
     private Font groupDisplay = new Font("Verdana",Font.PLAIN,11);
+    private Color[] colors;
+    
                 
     
     public GUISquareSpace(int x, int y, int dims, boolean special){
@@ -43,7 +45,13 @@ public class GUISquareSpace extends JButton {
     
     public void paintComponent(Graphics g){
         digit = space.getValue();
-                
+        Group group = space.getGroup();
+        
+        if (group != null){
+            g.setColor(colors[group.groupIDX%colors.length]);
+            g.fillRect(0,0,50,50);
+        }
+        
         if (!canBeChanged){
             g.setColor(new Color(218,218,218));
             g.fillRect(0,0,50,50);
@@ -57,13 +65,15 @@ public class GUISquareSpace extends JButton {
         if (special){
             g.setColor(black);
             g.setFont(groupDisplay);
-            Group group = space.getGroup();
             String op = group.getOp();
             if (op.equals("*"))
                 op = "X";
+            else if (op.equals("x"))
+                op = "";
             g.drawString(""+group.getTotal()+" "+op,3,12);
             
         }
+        repaint();
     }
     
     
@@ -74,6 +84,17 @@ public class GUISquareSpace extends JButton {
             canBeChanged = false;
         else {
             listen = new GUINumbersMenu(this,space);
+        }
+        if (space.getGroup() != null){
+            int num = 255;
+            colors = new Color[10];
+            for (int i = 0; i < colors.length; i++){
+                colors[i] = new Color(num,num,num,30);
+                if (num > 175)
+                    num -= 16;
+                else
+                    num -= 20;
+            }
         }
     }
     

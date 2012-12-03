@@ -159,7 +159,7 @@ public class FileLoader {
             int noOfSpaces = Integer.parseInt(strang[2]);
                         
             groups[i] = new Group(Integer.parseInt(strang[0]),strang[1],
-                                noOfSpaces);
+                                noOfSpaces,i);
             
             for (int j = 0; j<noOfSpaces;j++){
                 r = s.nextInt();
