@@ -4,6 +4,9 @@ import java.awt.event.* ;
 
 public class GUIMain extends JFrame implements ActionListener {
     
+    private JButton kenken6x6;
+    private JButton kenken4x4;
+    private JButton kenken3;
     private JButton soduku2;
     private JButton soduku1;
     private GUIGame sod;
@@ -34,13 +37,22 @@ public class GUIMain extends JFrame implements ActionListener {
         
         soduku1 = new JButton("Sudoku #1");
         soduku2 = new JButton("Sudoku #2");
+        kenken4x4 = new JButton("KenKen 4x4");
+        kenken6x6 = new JButton("KenKen 6x6");
+        kenken3 = new JButton("Kenken 9x9");
         soduku1.addActionListener(this);
         soduku2.addActionListener(this);
+        kenken4x4.addActionListener(this);
+        kenken6x6.addActionListener(this);
+        kenken3.addActionListener(this);
 
         contentPane.add(title);
         contentPane.add(Box.createRigidArea(new Dimension(40, 0)));
         contentPane.add(soduku1,BorderLayout.CENTER);
         contentPane.add(soduku2,BorderLayout.CENTER);
+        contentPane.add(kenken4x4,BorderLayout.CENTER);
+        contentPane.add(kenken6x6,BorderLayout.CENTER);
+        contentPane.add(kenken3,BorderLayout.CENTER);
     }
     
     
@@ -54,6 +66,26 @@ public class GUIMain extends JFrame implements ActionListener {
                 sod.init(new Soduku("boards/Soduku2"));
             sod.pack();
             sod.setSize(new Dimension(600,600));
+            sod.setVisible(true);
+        }
+        else if (source == kenken4x4 || source == kenken6x6 || source == kenken3){
+            sod = new GUIKenKen();
+            Game g;
+            if (source == kenken4x4){
+                g = new KenKen("boards/kenken1");
+                sod.init(g);
+            }
+            else if (source == kenken3){
+                g = new KenKen("boards/kenken3");
+                sod.init(g);
+            }
+            else {
+                g = new KenKen("boards/kenken2");
+                sod.init(g);
+            }
+            sod.pack();
+            int size = g.getDimensions()[0]*50;
+            sod.setSize(new Dimension(size+150,size+150));
             sod.setVisible(true);
         }
     }

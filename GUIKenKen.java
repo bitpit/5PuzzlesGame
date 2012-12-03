@@ -2,36 +2,34 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.event.* ;
 
-public class GUIGame extends JFrame implements ActionListener {
-    
+public class GUIKenKen extends GUIGame implements ActionListener {
+
     private JButton back;
     private JButton solve;
     private JButton check;
     private JFrame parent;
-    private GUISudokuBoard board;
+    private GUIKenKenBoard board;
     private Game game;
     private Solver solver;
-    private boolean autoSolved = false;
-        
+    
     
     public void init(Game game) {
-
+        
 		Container contentPane = this.getContentPane();
-
+        
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+        
         contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.PAGE_AXIS));
         
         this.game = game;
         solver = new Solver(game);
-        		
+        
+        
         JLabel title = new JLabel(game.getName());
         title.setFont(new Font("Verdana",Font.PLAIN,18));
         
-        board = new GUISudokuBoard(9,game);
-        board.setPreferredSize(new Dimension(450,450));
-        board.setMaximumSize(new Dimension(450,450));
-		        
+        board = new GUIKenKenBoard(game);
+        
         JPanel buttons = new JPanel(new FlowLayout());
         
         check = new JButton("Check Solution");
@@ -46,15 +44,14 @@ public class GUIGame extends JFrame implements ActionListener {
         buttons.add(check);
         buttons.add(back);
         buttons.add(solve);
-
+        
         contentPane.add(Box.createHorizontalStrut(10));
         contentPane.add(board);
         contentPane.add(Box.createVerticalGlue());
         contentPane.add(buttons);
         
-        		
+        
 	}
-
     
     
     public void actionPerformed(ActionEvent e){
@@ -65,11 +62,10 @@ public class GUIGame extends JFrame implements ActionListener {
         else if (sorce == solve){
             game.reset();
             solver.label();
-            autoSolved = true;
-            board.removeListeners();
+            //board.removeListeners();
             repaint();
         }
-        else if (sorce == check && !autoSolved){
+        else if (sorce == check){
             if (!game.finished()){
                 JOptionPane.showMessageDialog(this,
                                               "I don't think you've finished yet...",
@@ -94,5 +90,3 @@ public class GUIGame extends JFrame implements ActionListener {
         }
     }
 }
-
-

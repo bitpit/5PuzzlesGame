@@ -40,7 +40,7 @@ public class KenKen implements Game { //A sudoku game board
     public Space nextUnsolved(){
         for (int i = 0; i < dimensions[0];i++){
             for (int j = 0; j<dimensions[1];j++){
-                if (grids[i][j].labeled==false) return grids[i][j];
+                if (grids[i][j].getValue()==0) return grids[i][j];
             }
         }
         return null;
@@ -85,7 +85,7 @@ public class KenKen implements Game { //A sudoku game board
     }
     
     
-    public void printBoardTerm(){
+    public void printBoarddTerm(){
         
         System.out.println();
         
@@ -106,7 +106,7 @@ public class KenKen implements Game { //A sudoku game board
     }//boardDebugger*/
     
     
-    public void printBosardTerm(){
+    public void printBoardTerm(){
         
         System.out.println();
         

@@ -7,35 +7,41 @@ public class GUIKenKenBoard extends JPanel implements ActionListener {
 
 
     private Game g;
-    private JPanel[][] spaces;
+    private JButton[][] spaces;
     private GUISquareSpace space;
     private int dim;
+    private int spaceSize = 50;
        
     
-    public GUIKenKenBoard(int dim, Game game, JFrame frame){
+    public GUIKenKenBoard(Game game){
                        
-        setLayout(null);
-        spaces = new JPanel[dim][dim];
+        dim = game.getDimensions()[0];
+        
+        setLayout(new GridLayout(dim,dim));
+        spaces = new JButton[dim][dim];
+        
              
         for (int i = 0; i < spaces.length; i++){
             for (int j = 0; j < spaces[i].length; j++){
                 
-                JPanel p = new JPanel(new GridLayout(dim/3,dim/3));
-                p.setBorder(BorderFactory.createLineBorder(Color.black));
-                for (int k = 0; k < dim/3; k++){
-                    for (int l = 0; l < dim/3; l++){
-                        GUISquareSpace spacey = new GUISquareSpace(((k+1)+(i*(dim/3)))-1,((l+1)+(j*(dim/3))-1),50);
-                        int[] loc = spacey.getDims();
-                        spacey.setSpace(game.getSpaceAt(loc[0],loc[1]));
-                        p.add(spacey);
-                    }
-                }
-                //p.setPreferredSize(new Dimension(dim*3,dim*3));
-                spaces[i][j] = p;
-                add(spaces[i][j]);
+                boolean special;
+                Space otherSpace = game.getSpaceAt(i,j);
+                if (otherSpace.getGroup().getSpace(0) == otherSpace)
+                    special = true;
+                else
+                    special = false;
+                
+                GUISquareSpace spacey = new GUISquareSpace(i,j,spaceSize,special);
+                int[] loc = spacey.getDims();
+                spacey.setSpace(game.getSpaceAt(loc[0],loc[1]));
+                spaces[i][j] = spacey;
+                add(spacey);
+                
             }
         }
         setBorder(BorderFactory.createLineBorder(Color.black));
+        setPreferredSize(new Dimension(spaceSize*spaces.length,spaceSize*spaces[0].length));
+        setMaximumSize(new Dimension(spaceSize*spaces.length,spaceSize*spaces[0].length));
     }
     
     
@@ -46,7 +52,7 @@ public class GUIKenKenBoard extends JPanel implements ActionListener {
     
     public void removeListeners(){
         
-        for (JPanel[] panel : spaces){
+        for (JButton[] panel : spaces){
             for (int i = 0; i < panel.length; i++){
                 Component[] camps = panel[i].getComponents();
                 Component comp = null;
