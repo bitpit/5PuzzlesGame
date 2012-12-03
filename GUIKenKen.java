@@ -29,6 +29,7 @@ public class GUIKenKen extends GUIGame implements ActionListener {
         title.setFont(new Font("Verdana",Font.PLAIN,18));
         
         board = new GUIKenKenBoard(game);
+        board.setUpGroups();
         
         JPanel buttons = new JPanel(new FlowLayout());
         
