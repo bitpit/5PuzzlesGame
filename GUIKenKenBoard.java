@@ -85,9 +85,6 @@ public class GUIKenKenBoard extends JPanel {
                     offset = 2;
                 
                 groupToColor[conflictingGroups[0].groupIDX] = possibleColors[(conflictingGroups[0].groupIDX+offset)%possibleColors.length];   
-                /*System.out.println(""+conflictingGroups.length+" no of groups conflicting with "+i);
-                System.out.println("Group zero is "+conflictingGroups[0].groupIDX);
-                System.out.println(groupToColor[0]+" "+groupToColor[conflictingGroups[0].groupIDX]);*/
                 conflictingGroups = conflicting(i, groupToColor);
                 noOfTimes++;
             }
@@ -132,20 +129,10 @@ public class GUIKenKenBoard extends JPanel {
                 Space[] comparison = new Space[2];
                 comparison[0] = game.getSpaceAt(curSX, current.getY());
                 comparison[1] = game.getSpaceAt(current.getX(), curSY);
-                /*System.out.println("comparisons are at "+comparison[0].getX()+", "+comparison[0].getY()+
-                                   " and "+comparison[1].getX()+", "+comparison[1].getY()); 
-                System.out.println(comparison.length);
-*/
-                int mod = possibleColors.length;
+                int mod = groupToColor.length;
                 for (int j = 0; j < comparison.length; j++){
-                    /*System.out.println(!(comparison[j].getGroup().groupIDX == g.groupIDX));
-                    System.out.println((comparison[j].getGroup().groupIDX == g.groupIDX));
-                    System.out.println((comparison[j].getGroup().groupIDX != g.groupIDX)+" comparison is not in current group");
-                    System.out.println((comparison[j].getGroup().groupIDX)+" comparison idx, "+g.groupIDX+" current idx");
-                    System.out.println((possibleColors[comparison[j].getGroup().groupIDX%mod] == possibleColors[current.getGroup().groupIDX%mod])+" comparison is same as curr color");
-                    System.out.println(comparison[j].getGroup().groupIDX%mod+" comparison color idx, "+current.getGroup().groupIDX%mod+" current color idx");*/
                     if ((comparison[j].getGroup().groupIDX != g.groupIDX) && 
-                        groupToColor[comparison[j].getGroup().groupIDX%groupToColor.length] == groupToColor[current.getGroup().groupIDX%groupToColor.length] &&
+                        groupToColor[comparison[j].getGroup().groupIDX%mod] == groupToColor[current.getGroup().groupIDX%mod] &&
                         !touchers.contains(comparison[j].getGroup())){
                         touchers.add(comparison[j].getGroup());
                     }
