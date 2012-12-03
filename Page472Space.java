@@ -8,7 +8,7 @@ public class Page472Space extends KenKenSpace implements Space {
     public Group row;
     public Group column;
     public boolean labeled;
-        
+    
     
     public Page472Space (int dimensions, int ecks, int why) {
         
@@ -50,6 +50,7 @@ public class Page472Space extends KenKenSpace implements Space {
     
     
     public void nextPossibility(){
+        labeled = true;
         if (morePossibilities()){
             value = possiblities[value];
         }
@@ -89,17 +90,9 @@ public class Page472Space extends KenKenSpace implements Space {
     }
     
     
-    public void setValue(int v){
-        value = v;
-    }
-    
-    
     public void reset(){
+        labeled = false;
         value = 0;
-    }
-    
-    public void setLabeled(){
-        labeled = true;
     }
     
 }

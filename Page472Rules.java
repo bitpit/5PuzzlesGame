@@ -1,13 +1,19 @@
+import java.util.HashMap;
 public class Page472Rules implements Rule  {
     
     private Game game;
     private int dimensions;
     private String[] keys = {"-","0","A","B","C","D"};
-    
+    private HashMap<String, Integer> doors;
+
     
     public Page472Rules(Game g){
         game = g;
         dimensions = g.getDimensions()[0];
+        doors = new HashMap<String, Integer>();
+        for (int i = 2; i < keys.length; i++){
+            doors.put(keys[i],i);
+        }
     }
     
 
@@ -54,7 +60,7 @@ public class Page472Rules implements Rule  {
     }
     
     
-    private boolean rowShape(Space s){
+    public boolean rowShape(Space s){
                 
         Group row = s.getRow();
         String[] right = row.getRight();
@@ -80,7 +86,7 @@ public class Page472Rules implements Rule  {
     }
     
     
-    private boolean columnShape(Space s){
+    public boolean columnShape(Space s){
        
         
         Group column = s.getColumn();
