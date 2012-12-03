@@ -31,6 +31,12 @@ public class GUISquareSpace extends JButton {
         setPreferredSize(new Dimension(dims,dims));
     }
     
+    public GUISquareSpace(int x, int y, int dims, boolean special, boolean noBorder){
+        this(x,y,dims,special);
+        if (noBorder)
+            setBorder(null);
+    }
+    
     
     public int getDigit() { 
         return digit; 

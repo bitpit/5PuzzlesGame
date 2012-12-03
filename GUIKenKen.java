@@ -17,7 +17,7 @@ public class GUIKenKen extends GUIGame implements ActionListener {
         
 		Container contentPane = this.getContentPane();
         
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         
         contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.PAGE_AXIS));
         
