@@ -31,10 +31,13 @@ public class GUISquareSpace extends JButton {
         setPreferredSize(new Dimension(dims,dims));
     }
     
+  
     public GUISquareSpace(int x, int y, int dims, boolean special, boolean noBorder){
         this(x,y,dims,special);
-        if (noBorder)
+        if (noBorder){
+            listen = null;
             setBorder(null);
+        }
     }
     
     
@@ -49,8 +52,13 @@ public class GUISquareSpace extends JButton {
     
     
     public void paintComponent(Graphics g){
-        digit = space.getValue();
-        Group group = space.getGroup();
+        Group group;
+        if (space != null){
+            digit = space.getValue();
+            group = space.getGroup();
+        }
+        else
+            group = null;
         
         if (group != null){
             g.setColor(color);
@@ -68,7 +76,7 @@ public class GUISquareSpace extends JButton {
             g.drawString(""+digit,17,40);
         }
         
-        if (special){
+       if (special){
             g.setColor(black);
             g.setFont(groupDisplay);
             String op = group.getOp();

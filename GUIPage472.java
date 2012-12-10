@@ -3,17 +3,16 @@ import javax.swing.*;
 import java.awt.event.*;
 
 
-public class GUIKenKen extends GUIGame implements ActionListener {
+public class GUIPage472 extends GUIGame implements ActionListener {
 
     private JButton back;
     private JButton solve;
     private JButton check;
     private JFrame parent;
-    private GUIKenKenBoard board;
+    private GUIPage472Board board;
     private Game game;
     private Solver solver;
-    private GUITimerDialog timer;
-        
+            
     
     public void init(Game game) {
         
@@ -30,10 +29,9 @@ public class GUIKenKen extends GUIGame implements ActionListener {
         JLabel title = new JLabel(game.getName());
         title.setFont(new Font("Verdana",Font.PLAIN,18));
         
-        board = new GUIKenKenBoard(game);
-        board.setUpGroups();
-        //board.pack();
+        board = new GUIPage472Board(game);
         
+                
         JPanel buttons = new JPanel(new FlowLayout());
         
         check = new JButton("Check Solution");
@@ -60,23 +58,16 @@ public class GUIKenKen extends GUIGame implements ActionListener {
     
     public void actionPerformed(ActionEvent e){
         Object sorce  = e.getSource();
+        
         if (sorce == back){
             this.setVisible(false);
         }
         else if (sorce == solve){
             game.reset();
-            if (game.getDimensions()[0]>8){
-                timer = new GUITimerDialog();
-                timer.init(solver);
-                timer.pack();
-                //timer.setSize(new Dimension(350,100));
-                timer.setVisible(true);
-                
-            }
             solver.start();
             board.removeListeners();
             repaint();
-        }
+        }/*
         else if (sorce == check){
             if (!game.finished()){
                 JOptionPane.showMessageDialog(this,
@@ -100,5 +91,8 @@ public class GUIKenKen extends GUIGame implements ActionListener {
                 }
             }
         }
+         */
     }
+
+
 }

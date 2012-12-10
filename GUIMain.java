@@ -4,6 +4,7 @@ import java.awt.event.* ;
 
 public class GUIMain extends JFrame implements ActionListener {
     
+    private JButton page472;
     private JButton kenken6x6;
     private JButton kenken4x4;
     private JButton kenken3;
@@ -45,6 +46,9 @@ public class GUIMain extends JFrame implements ActionListener {
         kenken4x4.addActionListener(this);
         kenken6x6.addActionListener(this);
         kenken3.addActionListener(this);
+        
+        page472 = new JButton("Page 472");
+        page472.addActionListener(this);
 
         contentPane.add(title);
         contentPane.add(Box.createRigidArea(new Dimension(40, 0)));
@@ -53,6 +57,7 @@ public class GUIMain extends JFrame implements ActionListener {
         contentPane.add(kenken4x4,BorderLayout.CENTER);
         contentPane.add(kenken6x6,BorderLayout.CENTER);
         contentPane.add(kenken3,BorderLayout.CENTER);
+        contentPane.add(page472,BorderLayout.CENTER);
     }
     
     
@@ -69,8 +74,8 @@ public class GUIMain extends JFrame implements ActionListener {
             sod.setVisible(true);
         }
         else if (source == kenken4x4 || source == kenken6x6 || source == kenken3){
-            sod = new GUIKenKen();
             Game g;
+            sod = new GUIKenKen();
             if (source == kenken4x4){
                 g = new KenKen("boards/kenken1");
                 sod.init(g);
@@ -86,6 +91,15 @@ public class GUIMain extends JFrame implements ActionListener {
             sod.pack();
             int size = g.getDimensions()[0]*50;
             sod.setSize(new Dimension(size+150,size+150));
+            sod.setVisible(true);
+        }
+        else if (source == page472){
+            sod = new GUIPage472();
+            Game g = new Page472("boards/page1");
+            sod.init(g);
+            sod.pack();
+            int size = g.getDimensions()[0]*50;
+            sod.setSize(new Dimension(size+250,size+250));
             sod.setVisible(true);
         }
     }
