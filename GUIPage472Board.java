@@ -12,9 +12,8 @@ public class GUIPage472Board extends JPanel {
     private GUIPage472Space space;
     private int dim;
     private int spaceSize = 50;
-    private Group[] groups;
-
-       
+    private String[] spacePossibilities = {"Z","A","B","C","D"};
+           
     
     public GUIPage472Board(Game game){
                        
@@ -33,10 +32,10 @@ public class GUIPage472Board extends JPanel {
                 GUIPage472Space spacey;
                 
                 if (i == 0 || j == 0 || i == spaces.length-1 || j == spaces.length-1){
-                    spacey = new GUIPage472Space(i,j,spaceSize,false,true);
+                    spacey = new GUIPage472Space(i,j,spaceSize,true, spacePossibilities, spaces.length, true);
                 }
                 else{
-                    spacey = new GUIPage472Space(i,j,spaceSize,false);
+                    spacey = new GUIPage472Space(i,j,spaceSize,false, spacePossibilities);
                 }
                 
                 int[] loc = spacey.getDims();
@@ -78,5 +77,55 @@ public class GUIPage472Board extends JPanel {
         }
     }
     
+    
+    public void setUpGroups(){
+        Group[] groups = game.getGroups();//first half is column stuff, second half is row stuff
+        Group current;
+        
+        GUIPage472Space crammy;
+        
+        for (int i = 0; i < groups.length/2; i++){//column
+            current = groups[i];
+            if (current.getLeft()[0] != null){
+                crammy = (GUIPage472Space)(spaces[0][i+1]);
+                crammy.specialInfo = current.getLeft();
+            }
+            if (current.getRight()[0] != null){
+                crammy = (GUIPage472Space)(spaces[spaces.length-1][i+1]);
+                crammy.specialInfo = current.getRight();
+            }
+        }
+        
+        int mod = groups.length/2;
+        
+        for (int i = groups.length/2; i < groups.length; i++){
+            current = groups[i];
+            if (current.getLeft()[0] != null){
+                crammy = (GUIPage472Space)(spaces[(i%mod)+1][0]);
+                crammy.specialInfo = current.getLeft();
+            }
+            if (current.getRight()[0] != null){
+                crammy = (GUIPage472Space)(spaces[(i%mod)+1][spaces.length-1]);
+                crammy.specialInfo = current.getRight();
+            }
+        }
+    }
+    
+    
+    public void convertForCheck(boolean toOne){
+        for (int i = 0; i < game.getDimensions()[0]; i++){
+            for (int j = 0; j < game.getDimensions()[1]; j++){
+                Space s = game.getSpaceAt(i,j);
+                if (toOne){
+                    if (s.getValue() == 0)
+                        s.setValue(1);
+                }
+                else {
+                    if (s.getValue() == 1)
+                        s.setValue(0);
+                }
+            }
+        }
+    }
     
 }

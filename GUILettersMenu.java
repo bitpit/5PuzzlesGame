@@ -24,14 +24,14 @@ public class GUILettersMenu extends GUINumbersMenu implements ActionListener {
         menu.add(blank);
         blank.addActionListener(listen);
         
-        JMenuItem zee = new JMenuItem("Z");
+        //JMenuItem zee = new JMenuItem("Z");
         JMenuItem ay = new JMenuItem("A");
         JMenuItem be = new JMenuItem("B");
         JMenuItem see = new JMenuItem("C");
         JMenuItem dee = new JMenuItem("D");
         
-        menu.add(zee);
-        zee.addActionListener(listen);
+//        menu.add(zee);
+  //      zee.addActionListener(listen);
         menu.add(ay);
         ay.addActionListener(listen);
         menu.add(be);

@@ -3,40 +3,56 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+
 public class GUIPage472Space extends JButton {
     
     private int x, y;
     private Space space;
     private int digit = 0;
     private Font f = new Font("Verdana",Font.PLAIN, 25);;
-    boolean canBeChanged = true;
-    private int dimensions;
     private GUILettersMenu listen;
     private boolean special;
-    private Font groupDisplay = new Font("Verdana",Font.PLAIN,11);
+    private Font groupDisplay = new Font("Verdana",Font.PLAIN,12);
     private Color color;
-    private String[] spacePossibilities = {"Z","A","B","C","D"};
-                    
+    private String[] spacePossibilities;
+    public String[] specialInfo;
+    private ImageIcon arrow;
+                      
     
-    public GUIPage472Space(int x, int y, int dims, boolean special){
+    public GUIPage472Space(int x, int y, int dims, boolean special, String[] sP){
         super();
         
         this.special = special;
-        dimensions = dims;
         this.x = x;
         this.y = y;
+        spacePossibilities = sP;
         
         setBorder(BorderFactory.createLineBorder(Color.black));
         setPreferredSize(new Dimension(dims,dims));
     }
     
   
-    public GUIPage472Space(int x, int y, int dims, boolean special, boolean noBorder){
-        this(x,y,dims,special);
+    public GUIPage472Space(int x, int y, int dims, boolean special, String[] sP, int fullDim, boolean noBorder){
+        this(x,y,dims,special,sP);
         if (noBorder){
             listen = null;
             setBorder(null);
         }
+        
+        if (x == 0){//left
+            arrow = new ImageIcon("arrows/down.png");
+        }
+        else if (x == fullDim-1){//right
+            arrow = new ImageIcon("arrows/up.png");
+        }
+        else if (y == 0){//top
+            arrow = new ImageIcon("arrows/right.png");
+        }
+        else { //bottom
+            arrow = new ImageIcon("arrows/left.png");
+        }
+        
+        digit = fullDim;
     }
     
     
@@ -44,11 +60,28 @@ public class GUIPage472Space extends JButton {
         if (space != null){
             digit = space.getValue();
             
-            System.out.println(digit);
-            if (digit > 0){
+            if (digit > 1){
                 g.setColor(Color.black);
                 g.setFont(f);
-                g.drawString(spacePossibilities[digit-1],17,40);
+                g.drawString(spacePossibilities[digit-1],19,40);
+            }
+        }
+        else if (specialInfo != null) {
+            g.setColor(Color.black);
+            g.setFont(groupDisplay);
+            g.drawString(specialInfo[0]+" "+specialInfo[1],6,20);
+            
+            if (x == 0){//left
+                arrow.paintIcon(this,g,32,10); 
+            }
+            else if (x == digit-1){//right
+                arrow.paintIcon(this,g,30,4);
+            }
+            else if (y == 0){//top
+                arrow.paintIcon(this,g,10,28);
+            }
+            else { //bottom
+                arrow.paintIcon(this,g,4,28);
             }
         }
         

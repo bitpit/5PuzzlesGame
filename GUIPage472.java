@@ -30,6 +30,7 @@ public class GUIPage472 extends GUIGame implements ActionListener {
         title.setFont(new Font("Verdana",Font.PLAIN,18));
         
         board = new GUIPage472Board(game);
+        board.setUpGroups();
         
                 
         JPanel buttons = new JPanel(new FlowLayout());
@@ -67,8 +68,10 @@ public class GUIPage472 extends GUIGame implements ActionListener {
             solver.start();
             board.removeListeners();
             repaint();
-        }/*
+            solve.removeActionListener(this);
+        }
         else if (sorce == check){
+            board.convertForCheck(true);
             if (!game.finished()){
                 JOptionPane.showMessageDialog(this,
                                               "I don't think you've finished yet...",
@@ -90,8 +93,9 @@ public class GUIPage472 extends GUIGame implements ActionListener {
                                                   JOptionPane.ERROR_MESSAGE);
                 }
             }
+            board.convertForCheck(false);
         }
-         */
+
     }
 
 

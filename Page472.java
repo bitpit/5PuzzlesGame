@@ -150,6 +150,10 @@ public class Page472 implements Game {
  
     
     public void reset(){
-        
+        for (Page472Space[] arr : grids){
+            for (Page472Space space : arr){
+                space.setValue(0);
+            }
+        }
     }
 }

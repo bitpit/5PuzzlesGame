@@ -68,6 +68,7 @@ public class GUIGame extends JFrame implements ActionListener {
             autoSolved = true;
             board.removeListeners();
             repaint();
+            solve.removeActionListener(this);
         }
         else if (sorce == check && !autoSolved){
             if (!game.finished()){
