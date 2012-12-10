@@ -28,7 +28,11 @@ public class KenKen implements Game { //A sudoku game board
     
     
     public void reset(){
-    
+        for (int i = 0; i < grids.length; i++){
+            for (int j = 0; j < grids.length; j++){
+                grids[i][j].setValue(0);
+            }
+        }
     }
     
     

@@ -69,7 +69,6 @@ public class GUIKenKen extends GUIGame implements ActionListener {
                 timer = new GUITimerDialog();
                 timer.init(solver);
                 timer.pack();
-                //timer.setSize(new Dimension(350,100));
                 timer.setVisible(true);
                 
             }

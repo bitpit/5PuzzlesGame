@@ -95,4 +95,8 @@ public class Page472Space extends KenKenSpace implements Space {
         value = 0;
     }
     
+    public void setValue(int v){
+        value = v;
+    }
+    
 }

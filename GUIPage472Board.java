@@ -9,7 +9,7 @@ public class GUIPage472Board extends JPanel {
 
     private Game game;
     private JButton[][] spaces;
-    private GUISquareSpace space;
+    private GUIPage472Space space;
     private int dim;
     private int spaceSize = 50;
     private Group[] groups;
@@ -30,13 +30,13 @@ public class GUIPage472Board extends JPanel {
         for (int i = 0; i < spaces.length; i++){
             for (int j = 0; j < spaces[i].length; j++){
                 
-                GUISquareSpace spacey;
+                GUIPage472Space spacey;
                 
                 if (i == 0 || j == 0 || i == spaces.length-1 || j == spaces.length-1){
-                    spacey = new GUISquareSpace(i,j,spaceSize,false,true);
+                    spacey = new GUIPage472Space(i,j,spaceSize,false,true);
                 }
                 else{
-                    spacey = new GUISquareSpace(i,j,spaceSize,false);
+                    spacey = new GUIPage472Space(i,j,spaceSize,false);
                 }
                 
                 int[] loc = spacey.getDims();
