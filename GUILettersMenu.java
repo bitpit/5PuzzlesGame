@@ -24,7 +24,16 @@ public class GUILettersMenu extends GUINumbersMenu implements ActionListener {
         menu.add(blank);
         blank.addActionListener(listen);
         
-        //JMenuItem zee = new JMenuItem("Z");
+        
+        for (int i = 65; i < s.getPossibilities()+64; i++){
+            char c = (char)i;
+            JMenuItem item = new JMenuItem(String.valueOf(c));
+            menu.add(item);
+            item.addActionListener(listen);
+        }
+        
+        
+        /*//JMenuItem zee = new JMenuItem("Z");
         JMenuItem ay = new JMenuItem("A");
         JMenuItem be = new JMenuItem("B");
         JMenuItem see = new JMenuItem("C");
@@ -39,7 +48,7 @@ public class GUILettersMenu extends GUINumbersMenu implements ActionListener {
         menu.add(see);
         see.addActionListener(listen);
         menu.add(dee);
-        dee.addActionListener(listen);
+        dee.addActionListener(listen);*/
         
         clicker.addActionListener(this);
         

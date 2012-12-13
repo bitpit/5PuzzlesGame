@@ -19,7 +19,7 @@ public class GUILettersMenuListener implements ActionListener {
         if (action.equals("")){
             space.setValue(0);
         }
-        else if (action.equals("Z")){
+        else {/*if (action.equals("Z")){
             space.setValue(1);
         }
         else if (action.equals("A")){
@@ -33,6 +33,12 @@ public class GUILettersMenuListener implements ActionListener {
         }
         else{
             space.setValue(5);
+        }*/
+            for (int i = 65; i < space.getPossibilities()+64; i++){
+                char c = (char)i;
+                if (action.equals(String.valueOf(c)))
+                    space.setValue(i-63);
+            }
         }
 
     }
