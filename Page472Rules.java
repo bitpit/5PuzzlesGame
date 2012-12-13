@@ -32,7 +32,7 @@ public class Page472Rules implements Rule  {
                 tracky1++;
         }
         
-        if (tracky1>2)
+        if (tracky1>dimensions/3)
             return false;
         return true;
         
@@ -44,8 +44,15 @@ public class Page472Rules implements Rule  {
         int tracky1 = 0;
         int x = s.getX();
         
+        int[] tracker = new int[dimensions];
+        
         for (int i = 0; i < dimensions; i++){
             Space q = game.getSpaceAt(x,i);
+            /*for (int j : tracker){
+                if (j == q.getValue() && j > 1)
+                    return false;
+                tracker[i] = q.getValue();
+            }*/
             if (q.getValue() == s.getValue() && (q.getValue() > 1)){
                 if (i != s.getY())
                     return false;
@@ -53,7 +60,7 @@ public class Page472Rules implements Rule  {
             else if (q.getValue() > 0 && q.getValue() < 2)
                 tracky1++;
         }
-        if (tracky1>2)
+        if (tracky1>dimensions/3)
             return false;
         
         return true;
@@ -115,34 +122,37 @@ public class Page472Rules implements Rule  {
     private boolean totalShapeChecker(Group group, String[] rulez, 
                                       Space s, boolean fromBottom, boolean column){
         
-        int rulezInt = Integer.parseInt(rulez[1]);
-        int letterCount = countLetters(column, s);
-        
-        if (fromBottom){//starting from right or from bottom
-            if (letterCount < 4){
-                return true;
-            }
-            else if (letterCount == 4){
-                Space q;
-                q = getNthLetter(rulezInt, s, column, fromBottom);
-                if (keys[q.getValue()].equals(rulez[0]))
+        if (rulez[1] != null){
+            int rulezInt = Integer.parseInt(rulez[1]);
+            int letterCount = countLetters(column, s);
+            
+            if (fromBottom){//starting from right or from bottom
+                if (letterCount < 4){
                     return true;
-            }
-        }
-        
-        else {//starting from left or from top
-            for (int i = 0; i < game.getDimensions()[0]; i++){
-                if (countLetters(column,s) >= rulezInt){
+                }
+                else if (letterCount == 4){
                     Space q;
                     q = getNthLetter(rulezInt, s, column, fromBottom);
                     if (keys[q.getValue()].equals(rulez[0]))
                         return true;
                 }
-                else if (countLetters(column,s) < rulezInt)
-                    return true;
             }
+            
+            else {//starting from left or from top
+                for (int i = 0; i < game.getDimensions()[0]; i++){
+                    if (countLetters(column,s) >= rulezInt){
+                        Space q;
+                        q = getNthLetter(rulezInt, s, column, fromBottom);
+                        if (keys[q.getValue()].equals(rulez[0]))
+                            return true;
+                    }
+                    else if (countLetters(column,s) < rulezInt)
+                        return true;
+                }
+            }
+            return false;
         }
-        return false;
+        return true;
     }
     
     

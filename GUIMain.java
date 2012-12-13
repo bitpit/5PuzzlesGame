@@ -47,9 +47,11 @@ public class GUIMain extends JFrame implements ActionListener {
         kenken6x6.addActionListener(this);
         kenken3.addActionListener(this);
         
-        page472 = new JButton("Page 472");
+        
+        
+        page472 = new JButton("Easy As ABC 6x6");
         page472.addActionListener(this);
-
+       
         contentPane.add(title);
         contentPane.add(Box.createRigidArea(new Dimension(40, 0)));
         contentPane.add(soduku1,BorderLayout.CENTER);
@@ -93,9 +95,11 @@ public class GUIMain extends JFrame implements ActionListener {
             sod.setSize(new Dimension(size+150,size+150));
             sod.setVisible(true);
         }
+        
         else if (source == page472){
+            Game g;
             sod = new GUIPage472();
-            Game g = new Page472("boards/page1");
+            g = new Page472("boards/page1");
             sod.init(g);
             sod.pack();
             int size = g.getDimensions()[0]*50;
