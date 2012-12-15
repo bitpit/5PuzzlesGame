@@ -13,7 +13,7 @@ public class SixPackSpace implements Space {
         x = ecks;
         y = why;
         value = 0;
-        possiblities = new int[15];
+        possiblities = new int[9];
         for (int i = 0; i < possiblities.length; i++){
             possiblities[i] = i+1;
         }

@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class GUISixPackSpace extends JButton implements ActionListener {
+public class GUISixPackSpace extends JButton {
     
     private int x, y;
     private int digit = 0;
@@ -23,9 +23,9 @@ public class GUISixPackSpace extends JButton implements ActionListener {
         this.y = y;
         this.space = s;
         
-        this.addActionListener(this);
+        if (s.getValue() == 0)
+            listen = new GUINumbersMenu(this,s);
         
-        //setBorder(BorderFactory.createLineBorder(Color.black));
         setPreferredSize(new Dimension(50,50));
     }
     
@@ -41,9 +41,7 @@ public class GUISixPackSpace extends JButton implements ActionListener {
     
     
     public void paintComponent(Graphics g){
-        
-        g.setColor(Color.black);
-        
+   
         if (triangle == null){
             
             int[] xEs, yEs;
@@ -88,6 +86,9 @@ public class GUISixPackSpace extends JButton implements ActionListener {
             triangle = new Polygon(xEs,yEs,4);
         }
         
+        g.setColor(Color.white);
+        g.fillPolygon(triangle);
+        g.setColor(Color.black);
         g.drawPolygon(triangle);
         
         digit = space.getValue();
@@ -101,27 +102,5 @@ public class GUISixPackSpace extends JButton implements ActionListener {
         }
     }
     
-    
-    public int[] getDims(){
-        int[] ret = new int[2];
-        ret[0] = this.x;
-        ret[1] = this.y;
-        return ret;
-    }
-    
-    
-    public void setColor(Color c){
-        this.color = c;
-    }
-    
-    
-    public Color getColor(){
-        return color;
-    }
-    
-    
-    public void actionPerformed(ActionEvent e){
-        System.out.println(x+", "+y);
-    }
-    
+
 }

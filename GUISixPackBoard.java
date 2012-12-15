@@ -34,19 +34,26 @@ public class GUISixPackBoard extends JPanel {
                 }
                     
                 else {
-                    this.add(new JPanel());
+                    JPanel pane = new JPanel();
+                    pane.setBackground(Color.white);
+                    this.add(pane);
                 }
             }
             x++;
             y = 0;
         }
-                       
-       this.setPreferredSize(new Dimension(50*9,50*9+50));
         
+        this.setPreferredSize(new Dimension(50*9,50*9+50));
+        //this.setBorder(BorderFactory.createLineBorder(new Color(178,178,178)));
+
                 
     }
+   
     
     public void paintComponent(Graphics g){
+        
+        g.setColor(Color.white);
+        g.fillRect(0,0,this.getWidth(),this.getHeight());
         
         g.setColor(Color.black);
         

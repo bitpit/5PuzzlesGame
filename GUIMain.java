@@ -5,6 +5,7 @@ import java.awt.event.* ;
 public class GUIMain extends JFrame implements ActionListener {
     
     private JButton sixpack1;
+    private JButton sixpack2;
     private JButton page472;
     private JButton kenken6x6;
     private JButton kenken4x4;
@@ -28,7 +29,7 @@ public class GUIMain extends JFrame implements ActionListener {
         contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.PAGE_AXIS));
        
         JPanel space = new JPanel(null);
-        space.setSize(new Dimension(20,20));
+        //space.setSize(new Dimension(20,20));
         
 
 		JLabel title = new JLabel("Puzzles");
@@ -42,13 +43,15 @@ public class GUIMain extends JFrame implements ActionListener {
         kenken4x4 = new JButton("KenKen 4x4");
         kenken6x6 = new JButton("KenKen 6x6");
         kenken3 = new JButton("Kenken 9x9");
-        sixpack1 = new JButton("SixPack");
+        sixpack1 = new JButton("SixPack #1");
+        sixpack2 = new JButton("Sixpack #2");
         soduku1.addActionListener(this);
         soduku2.addActionListener(this);
         kenken4x4.addActionListener(this);
         kenken6x6.addActionListener(this);
         kenken3.addActionListener(this);
         sixpack1.addActionListener(this);
+        sixpack2.addActionListener(this);
         
         
         
@@ -64,6 +67,7 @@ public class GUIMain extends JFrame implements ActionListener {
         contentPane.add(kenken3,BorderLayout.CENTER);
         contentPane.add(page472,BorderLayout.CENTER);
         contentPane.add(sixpack1,BorderLayout.CENTER);
+        contentPane.add(sixpack2,BorderLayout.CENTER);
     }
     
     
@@ -110,8 +114,12 @@ public class GUIMain extends JFrame implements ActionListener {
             sod.setSize(new Dimension(size+250,size+250));
             sod.setVisible(true);
         }
-        else if (source == sixpack1){
-            Game g = new SixPack("boards/sixpk1");
+        else if (source == sixpack1 || source == sixpack2){
+            Game g;
+            if (source == sixpack1)
+                g = new SixPack("boards/sixpk1");
+            else
+                g = new SixPack("boards/sixpk2");
             sod = new GUISixPack();
             sod.init(g);
             sod.pack();

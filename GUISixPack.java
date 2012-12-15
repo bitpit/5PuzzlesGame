@@ -51,22 +51,22 @@ public class GUISixPack extends GUIGame implements ActionListener {
         contentPane.add(Box.createVerticalGlue());
         contentPane.add(buttons);
         
+        this.setPreferredSize(new Dimension(430,540));
+        
         		
 	}
 
-    
     
     public void actionPerformed(ActionEvent e){
         Object sorce  = e.getSource();
         
         if (sorce == back){
             this.setVisible(false);
-        }/*
+        }
         else if (sorce == solve){
             game.reset();
             solver.label();
             autoSolved = true;
-            board.removeListeners();
             repaint();
             solve.removeActionListener(this);
         }
@@ -83,7 +83,6 @@ public class GUISixPack extends GUIGame implements ActionListener {
                                                   "You Solved It!",
                                                   "Congratulations!",
                                                   JOptionPane.INFORMATION_MESSAGE);
-                    board.removeListeners();
                 }
                 else {
                     JOptionPane.showMessageDialog(this,
@@ -92,7 +91,7 @@ public class GUISixPack extends GUIGame implements ActionListener {
                                                   JOptionPane.ERROR_MESSAGE);
                 }
             }
-        }*/
+        }
     }
 }
 
