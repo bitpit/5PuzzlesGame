@@ -6,10 +6,16 @@ import java.lang.NumberFormatException;
 public class GUILettersMenuListener implements ActionListener {
     
     private Space space;
+    private boolean forLogi;
     
     
     public GUILettersMenuListener(Space s){
         space = s;
+    }
+    
+    public GUILettersMenuListener(Space s, boolean logi){
+        space = s;
+        forLogi = true;
     }
     
     
@@ -22,8 +28,10 @@ public class GUILettersMenuListener implements ActionListener {
         else {
             for (int i = 65; i < space.getPossibilities()+64; i++){
                 char c = (char)i;
-                if (action.equals(String.valueOf(c)))
+                if (action.equals(String.valueOf(c)) && !forLogi)
                     space.setValue(i-63);
+                else if (action.equals(String.valueOf(c)) && forLogi)
+                    space.setValue(i-64);
             }
         }
 

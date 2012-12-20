@@ -4,6 +4,7 @@ import java.awt.event.* ;
 
 public class GUIMain extends JFrame implements ActionListener {
     
+    private JButton logi1;
     private JButton sixpack1;
     private JButton sixpack2;
     private JButton page472;
@@ -45,6 +46,7 @@ public class GUIMain extends JFrame implements ActionListener {
         kenken3 = new JButton("Kenken 9x9");
         sixpack1 = new JButton("SixPack #1");
         sixpack2 = new JButton("Sixpack #2");
+        logi1 = new JButton("Logi5 #1");
         soduku1.addActionListener(this);
         soduku2.addActionListener(this);
         kenken4x4.addActionListener(this);
@@ -52,6 +54,7 @@ public class GUIMain extends JFrame implements ActionListener {
         kenken3.addActionListener(this);
         sixpack1.addActionListener(this);
         sixpack2.addActionListener(this);
+        logi1.addActionListener(this);
         
         
         
@@ -68,6 +71,7 @@ public class GUIMain extends JFrame implements ActionListener {
         contentPane.add(page472,BorderLayout.CENTER);
         contentPane.add(sixpack1,BorderLayout.CENTER);
         contentPane.add(sixpack2,BorderLayout.CENTER);
+        contentPane.add(logi1,BorderLayout.CENTER);
     }
     
     
@@ -112,6 +116,14 @@ public class GUIMain extends JFrame implements ActionListener {
                 sod.init(new SixPack("boards/sixpk1"));
             else
                 sod.init(new SixPack("boards/sixpk2"));
+            sod.pack();
+            sod.setSize(new Dimension(sod.getWidth()+50,sod.getHeight()+50));
+            sod.setVisible(true);
+        }
+        else if (source == logi1){
+            sod = new GUILogi5();
+            if (source == logi1)
+                sod.init(new Logi5("boards/logi1"));
             sod.pack();
             sod.setSize(new Dimension(sod.getWidth()+50,sod.getHeight()+50));
             sod.setVisible(true);
