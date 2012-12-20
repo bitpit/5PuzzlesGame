@@ -69,6 +69,7 @@ public class GUIPage472 extends GUIGame implements ActionListener {
             board.removeListeners();
             repaint();
             solve.removeActionListener(this);
+            check.removeActionListener(this);
         }
         else if (sorce == check){
             board.convertForCheck(true);

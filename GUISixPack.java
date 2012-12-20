@@ -70,6 +70,7 @@ public class GUISixPack extends GUIGame implements ActionListener {
             autoSolved = true;
             repaint();
             solve.removeActionListener(this);
+            check.removeActionListener(this);
         }
         else if (sorce == check && !autoSolved){
             if (!game.finished()){

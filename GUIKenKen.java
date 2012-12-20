@@ -75,6 +75,7 @@ public class GUIKenKen extends GUIGame implements ActionListener {
             board.removeListeners();
             repaint();
             solve.removeActionListener(this);
+            check.removeActionListener(this);
         }
         else if (sorce == check){
             if (!game.finished()){
