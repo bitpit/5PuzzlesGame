@@ -18,6 +18,7 @@ public class Solver extends Thread {
         if (type.equals("KenKen")) rules = new KenKenRules(g);
         if (type.equals("Page472")) rules = new Page472Rules(g);
         if (type.equals("SixPack")) rules = new SixPackRules(g);
+        if (type.equals("Logi5")) rules = new Logi5Rules(g);
         
         
     }

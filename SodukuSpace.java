@@ -3,6 +3,7 @@ public class SodukuSpace implements Space {
     private int value;
     private int x;
     private int y;
+    private Group group;
     private int[] possiblities;
     public boolean labeled;
         
@@ -56,7 +57,7 @@ public class SodukuSpace implements Space {
     
     
     public Group getGroup(){
-        return null;
+        return group;
     }
     
     
@@ -66,7 +67,7 @@ public class SodukuSpace implements Space {
     
     
     public void setGroup(Group g){
-        Group group = g;
+        group = g;
     }
     
     

@@ -92,9 +92,41 @@ public class FileLoader {
             return loadSixPack(g);
         }
         
+        else if (g.getName().equals("Logi5")){
+            return loadLogi5(g);
+        }
+        
         return null;
         
     }//load dispatcher 
+    
+    
+    public Group[] loadLogi5(Game g){
+        int r, c;
+        s.useDelimiter(",");
+        
+        int grps = s.nextInt();
+        
+        Group[] groups = new Group[grps];
+        s.nextLine();
+        
+        for (int i = 0; i < grps; i ++){
+            
+            groups[i] = new Group(5,i,0);
+            
+            for (int j = 0; j < 5; j++){
+                r = s.nextInt();
+                c = s.nextInt();
+                groups[i].addSpace(g.getSpaceAt(r,c));
+                g.getSpaceAt(r,c).setGroup(groups[i]);
+                if (s.hasNextInt())
+                    g.getSpaceAt(r,c).setValue(s.nextInt());
+                s.nextLine();
+            }
+        }
+        
+        return groups;
+    }
     
     
     public int[] getDimensions(){

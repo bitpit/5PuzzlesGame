@@ -14,6 +14,11 @@ public class Group {
         groupIDX = idx;
     }
     
+    public Group(int numOfSpaces, int idx, int total){
+        spaces = new Space[numOfSpaces];
+        groupIDX = idx;
+    }
+    
     
     public Group(){
         total = 0;

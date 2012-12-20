@@ -22,11 +22,14 @@ public class Total {
         else if (str[1].substring(0,4).equals("sixp")){
             g = new SixPack(args[0]);
         }
+        else if (str[1].substring(0,4).equals("logi")){
+            g = new Logi5(args[0]);
+        }
         else {
             g = new Soduku(args[0]);
             System.out.println();
         }   
-            
+        
         //if (!str[1].substring(0,4).equals("page")){
         System.out.println();
         g.printBoardTerm();
