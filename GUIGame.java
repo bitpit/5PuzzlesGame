@@ -54,9 +54,13 @@ public class GUIGame extends JFrame implements ActionListener {
         
         		
 	}
+    
+    
+    public void init(Game game, String str){
+        this.init(game);
+    }
 
-    
-    
+        
     public void actionPerformed(ActionEvent e){
         Object sorce  = e.getSource();
         if (sorce == back){

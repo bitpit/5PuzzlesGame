@@ -128,8 +128,10 @@ public class FileLoader {
             
             for (int i = 0; i < 6; i ++){
                 Space qb = g.getSpaceAt(s.nextInt(),s.nextInt());
-                if (s.hasNextInt())
+                if (s.hasNextInt()){
                     qb.setValue(s.nextInt());
+                    qb.setLabeled();
+                }
                 groups[j].addSpace(qb);
                 qb.setGroup(groups[j]);
                 s.nextLine();

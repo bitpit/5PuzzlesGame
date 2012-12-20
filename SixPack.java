@@ -2,7 +2,7 @@ public class SixPack implements Game {
 
     
     private SixPackSpace[][] grids; //the spaces
-    private String name; //the name of the game: soduku (because i only learned how to spell later)
+    private String name;
     int[] dimensions;
     public Group[] groups;
     private boolean fin = false;
@@ -40,7 +40,13 @@ public class SixPack implements Game {
     
     
     public void reset(){
-        
+        for (SixPackSpace[] spacey : grids){
+            for (SixPackSpace space : spacey){
+                if (!space.labeled){
+                    space.setValue(0);
+                }
+            }
+        }
     }
 
 

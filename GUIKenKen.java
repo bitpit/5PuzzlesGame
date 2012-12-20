@@ -32,8 +32,7 @@ public class GUIKenKen extends GUIGame implements ActionListener {
         
         board = new GUIKenKenBoard(game);
         board.setUpGroups();
-        //board.pack();
-        
+                
         JPanel buttons = new JPanel(new FlowLayout());
         
         check = new JButton("Check Solution");

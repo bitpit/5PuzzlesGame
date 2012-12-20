@@ -23,7 +23,7 @@ public class GUISixPack extends GUIGame implements ActionListener {
         contentPane.setLayout(new FlowLayout());
         
         this.game = game;
-        solver = new Solver(game);
+        
         		
         JLabel title = new JLabel(game.getName());
         title.setFont(new Font("Verdana",Font.PLAIN,18));
@@ -64,6 +64,7 @@ public class GUISixPack extends GUIGame implements ActionListener {
             this.setVisible(false);
         }
         else if (sorce == solve){
+            solver = new Solver(game);
             game.reset();
             solver.label();
             autoSolved = true;

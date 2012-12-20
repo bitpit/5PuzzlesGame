@@ -78,50 +78,40 @@ public class GUIMain extends JFrame implements ActionListener {
             if (source == soduku1)
                 sod.init(new Soduku("boards/Soduku1"));
             else if (source == soduku2)
-                sod.init(new Soduku("boards/Soduku2"));
+                sod.init(new Soduku("boards/Soduku2"),"boards/Soduku2");
             sod.pack();
             sod.setSize(new Dimension(600,600));
             sod.setVisible(true);
         }
         else if (source == kenken4x4 || source == kenken6x6 || source == kenken3){
-            Game g;
             sod = new GUIKenKen();
             if (source == kenken4x4){
-                g = new KenKen("boards/kenken1");
-                sod.init(g);
+                sod.init(new KenKen("boards/kenken1"),"boards/kenken1");
             }
             else if (source == kenken3){
-                g = new KenKen("boards/kenken3");
-                sod.init(g);
+                sod.init(new KenKen("boards/kenken3"),"boards/kenken3");
             }
             else {
-                g = new KenKen("boards/kenken2");
-                sod.init(g);
+                sod.init(new KenKen("boards/kenken2"),"boards/kenken2");
             }
             sod.pack();
-            int size = g.getDimensions()[0]*50;
-            sod.setSize(new Dimension(size+150,size+150));
+            sod.setSize(sod.getWidth()+50,sod.getHeight()+50);
             sod.setVisible(true);
         }
         
         else if (source == page472){
-            Game g;
             sod = new GUIPage472();
-            g = new Page472("boards/page1");
-            sod.init(g);
+            sod.init(new Page472("boards/page1"));
             sod.pack();
-            int size = g.getDimensions()[0]*50;
-            sod.setSize(new Dimension(size+250,size+250));
+            sod.setSize(sod.getWidth()+50,sod.getHeight()+50);
             sod.setVisible(true);
         }
         else if (source == sixpack1 || source == sixpack2){
-            Game g;
-            if (source == sixpack1)
-                g = new SixPack("boards/sixpk1");
-            else
-                g = new SixPack("boards/sixpk2");
             sod = new GUISixPack();
-            sod.init(g);
+            if (source == sixpack1)
+                sod.init(new SixPack("boards/sixpk1"));
+            else
+                sod.init(new SixPack("boards/sixpk2"));
             sod.pack();
             sod.setSize(new Dimension(sod.getWidth()+50,sod.getHeight()+50));
             sod.setVisible(true);
