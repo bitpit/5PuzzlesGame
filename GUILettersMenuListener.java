@@ -26,12 +26,19 @@ public class GUILettersMenuListener implements ActionListener {
             space.setValue(0);
         }
         else {
-            for (int i = 65; i < space.getPossibilities()+64; i++){
-                char c = (char)i;
-                if (action.equals(String.valueOf(c)) && !forLogi)
-                    space.setValue(i-63);
-                else if (action.equals(String.valueOf(c)) && forLogi)
-                    space.setValue(i-64);
+            if (!forLogi){
+                for (int i = 65; i < space.getPossibilities()+64; i++){
+                    char c = (char)i;
+                    if (action.equals(String.valueOf(c)))
+                        space.setValue(i-63);
+                }
+            }
+            else {
+                for (int i = 65; i < space.getPossibilities()+65; i++){
+                    char c = (char)i;
+                    if (action.equals(String.valueOf(c)))
+                        space.setValue(i-64);
+                }
             }
         }
 

@@ -62,7 +62,7 @@ public class GUILogi5 extends GUIGame implements ActionListener {
         if (sorce == back){
             this.setVisible(false);
         }
-        /*else if (sorce == solve){
+        else if (sorce == solve){
             game.reset();
             solver.start();
             board.removeListeners();
@@ -92,6 +92,6 @@ public class GUILogi5 extends GUIGame implements ActionListener {
                                                   JOptionPane.ERROR_MESSAGE);
                 }
             }
-        }*/
+        }
     }
 }

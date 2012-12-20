@@ -119,8 +119,10 @@ public class FileLoader {
                 c = s.nextInt();
                 groups[i].addSpace(g.getSpaceAt(r,c));
                 g.getSpaceAt(r,c).setGroup(groups[i]);
-                if (s.hasNextInt())
+                if (s.hasNextInt()){
                     g.getSpaceAt(r,c).setValue(s.nextInt());
+                    g.getSpaceAt(r,c).setLabeled();
+                }
                 s.nextLine();
             }
         }
