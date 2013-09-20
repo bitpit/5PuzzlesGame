@@ -8,7 +8,6 @@ public class GUIPage472 extends GUIGame implements ActionListener {
     private JButton back;
     private JButton solve;
     private JButton check;
-    private JFrame parent;
     private GUIPage472Board board;
     private Game game;
     private Solver solver;

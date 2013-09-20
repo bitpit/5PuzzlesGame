@@ -1,0 +1,1 @@
+To run the game, compile all the java files and run 'java GUI'.

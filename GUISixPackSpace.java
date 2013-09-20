@@ -8,11 +8,9 @@ public class GUISixPackSpace extends JButton {
     private int x, y;
     private int digit = 0;
     private Space space;
-    private Font f = new Font("Verdana",Font.PLAIN, 20);;
     private GUINumbersMenu listen;
-    private Color black = new Color(0,0,0);
+    private Font f = new Font("Verdana",Font.PLAIN, 20);;
     private Font groupDisplay = new Font("Verdana",Font.PLAIN,11);
-    private Color color;
     private Polygon triangle;
                     
     

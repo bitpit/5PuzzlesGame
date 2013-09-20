@@ -8,7 +8,6 @@ public class GUILogi5 extends GUIGame implements ActionListener {
     private JButton back;
     private JButton solve;
     private JButton check;
-    private JFrame parent;
     private GUILogi5Board board;
     private Game game;
     private Solver solver;

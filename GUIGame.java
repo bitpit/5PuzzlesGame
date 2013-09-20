@@ -7,7 +7,6 @@ public class GUIGame extends JFrame implements ActionListener {
     private JButton back;
     private JButton solve;
     private JButton check;
-    private JFrame parent;
     private GUISudokuBoard board;
     private Game game;
     private Solver solver;

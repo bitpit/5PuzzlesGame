@@ -41,8 +41,8 @@ public class GUINumbersMenu implements ActionListener {
 		menu.show(myButton,myButton.getWidth()/2,myButton.getHeight()/2);
 	}
     
-    
     public GUINumbersMenu(){
+    
     }
     
     

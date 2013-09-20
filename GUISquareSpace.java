@@ -8,13 +8,11 @@ public class GUISquareSpace extends JButton {
     private int x, y;
     private int digit = 0;
     private Space space;
-    private JLabel lab;
-    private Font f = new Font("Verdana",Font.PLAIN, 25);;
     boolean canBeChanged = true;
     private int dimensions;
     private GUINumbersMenu listen;
     private boolean special;
-    private Color black = new Color(0,0,0);
+    private Font f = new Font("Verdana",Font.PLAIN, 25);;
     private Font groupDisplay = new Font("Verdana",Font.PLAIN,11);
     private Color color;
                     
@@ -71,13 +69,13 @@ public class GUISquareSpace extends JButton {
         }
         
         if (digit>0){
-            g.setColor(black);
+            g.setColor(Color.black);
             g.setFont(f);
             g.drawString(""+digit,17,40);
         }
         
        if (special){
-            g.setColor(black);
+            g.setColor(Color.black);
             g.setFont(groupDisplay);
             String op = group.getOp();
             if (op.equals("*"))

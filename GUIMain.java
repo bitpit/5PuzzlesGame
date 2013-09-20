@@ -30,9 +30,7 @@ public class GUIMain extends JFrame implements ActionListener {
         contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.PAGE_AXIS));
        
         JPanel space = new JPanel(null);
-        //space.setSize(new Dimension(20,20));
-        
-
+     
 		JLabel title = new JLabel("Puzzles");
 		title.setFont(new Font("Verdana",Font.PLAIN,42));
         
@@ -71,7 +69,7 @@ public class GUIMain extends JFrame implements ActionListener {
         contentPane.add(page472,BorderLayout.CENTER);
         contentPane.add(sixpack1,BorderLayout.CENTER);
         contentPane.add(sixpack2,BorderLayout.CENTER);
-        contentPane.add(logi1,BorderLayout.CENTER);
+        //contentPane.add(logi1,BorderLayout.CENTER); //super secret bonus game thats kinda broken
     }
     
     

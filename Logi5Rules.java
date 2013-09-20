@@ -70,13 +70,25 @@ public class Logi5Rules implements Rule  {
     
     public boolean allConstraints(){
         
-        Group[] g = game.getGroups();
+        /*Group[] g = game.getGroups();
         
         for (int i = 0; i < g.length; i++){
             if (!shape(g[i].getSpace(0)))
                 return false;
         }
         
+        for (int i = 0; i < game.getDimensions()[0]; i++){
+            if (!row(game.getSpaceAt(i,0)) || !column(game.getSpaceAt(0,i)))
+                return false;
+        }
+        
+        return true;*/
+        
+        for (int i = 0; i < game.getDimensions()[0]; i++){
+            if (!constraints(game.getSpaceAt(i,0)) ||
+                !constraints(game.getSpaceAt(0,i)))
+                return false;
+        }
         return true;
     }
 

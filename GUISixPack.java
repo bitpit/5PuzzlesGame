@@ -7,11 +7,9 @@ public class GUISixPack extends GUIGame implements ActionListener {
     private JButton back;
     private JButton solve;
     private JButton check;
-    private JFrame parent;
     private GUISixPackBoard board;
     private Game game;
     private Solver solver;
-    public boolean autoSolved = false;
         
     
     public void init(Game game) {
@@ -67,12 +65,11 @@ public class GUISixPack extends GUIGame implements ActionListener {
             
             game.reset();
             solver.label();
-            autoSolved = true;
             repaint();
             solve.removeActionListener(this);
             check.removeActionListener(this);
         }
-        else if (sorce == check && !autoSolved){
+        else if (sorce == check){
             if (!game.finished()){
                 JOptionPane.showMessageDialog(this,
                                               "I don't think you've finished yet...",

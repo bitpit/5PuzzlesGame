@@ -56,8 +56,8 @@ public class GUILogi5Space extends JButton {
             char c = (char)(digit+64);
             g.setColor(Color.black);
             g.setFont(f);
-            g.drawString(String.valueOf(c),17,40);
-            //g.drawString(""+digit,17,40);
+            //g.drawString(String.valueOf(c),17,40);
+            g.drawString(""+digit,17,40);
         }
         repaint();
     }

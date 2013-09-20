@@ -30,7 +30,6 @@ public class GUISudokuBoard extends JPanel implements ActionListener {
                         p.add(spacey);
                     }
                 }
-                //p.setPreferredSize(new Dimension(dim*3,dim*3));
                 spaces[i][j] = p;
                 add(spaces[i][j]);
             }
@@ -62,8 +61,7 @@ public class GUISudokuBoard extends JPanel implements ActionListener {
                 }
             }
         }
-        //ActionListener[] listeners = 
-        
+               
     }
     
 }

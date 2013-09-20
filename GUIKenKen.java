@@ -8,7 +8,6 @@ public class GUIKenKen extends GUIGame implements ActionListener {
     private JButton back;
     private JButton solve;
     private JButton check;
-    private JFrame parent;
     private GUIKenKenBoard board;
     private Game game;
     private Solver solver;

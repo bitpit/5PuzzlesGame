@@ -8,11 +8,8 @@ public class GUISixPackBoard extends JPanel {
 
     private Game g;
     private JPanel[][] spaces;
-    private JPanel space;
     private int dim;
-    private ImageIcon boardImage;  
-    private GUISixPackSpace fuk;
-    
+        
     
     public GUISixPackBoard(Game game){
         
@@ -21,6 +18,8 @@ public class GUISixPackBoard extends JPanel {
         int x,y;
         x = 0;
         y = 0;
+        
+        GUISixPackSpace fuk;
         
         for (int i = 0; i < 8; i++){
             for (int j = 0; j < 9; j++){
@@ -44,9 +43,7 @@ public class GUISixPackBoard extends JPanel {
         }
         
         this.setPreferredSize(new Dimension(50*9,50*9+50));
-        //this.setBorder(BorderFactory.createLineBorder(new Color(178,178,178)));
-
-                
+                        
     }
    
     
